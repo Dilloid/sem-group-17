@@ -1,4 +1,4 @@
-Group 17 Code of Conduct
+# Code of Conduct
 
 As a member of this group, I agree to:
 - Be respectful and considerate of my colleagues
@@ -9,4 +9,5 @@ As a member of this group, I agree to:
 - Conduct myself professionally. No harassment or exclusionary behaviour 
 
 [Failure to abide by this code of conduct will result in "disciplinary action"] 
+
 Punishment for being late to meetings - You must ask a *certain someone* about the details of their honours project  
