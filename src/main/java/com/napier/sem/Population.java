@@ -13,23 +13,35 @@ public class Population {
     private int population;
 
     /**
-     * Urban population percentage of the continent/region/country
+     * Urban population of the continent/region/country
      */
-    private float urban;
+    private int urban;
 
     /**
-     * Rural population percentage of the continent/region/country
+     * Urban population percentage of the continent/region/country
+     */
+    private float urbanPercentage;
+
+    /**
+     * Rural population of the continent/region/country
      */
     private float rural;
 
     /**
+     * Rural population percentage of the continent/region/country
+     */
+    private float ruralPercentage;
+
+    /**
      * Constructor for population
      */
-    public Population(String area, int population, float urban, float rural) {
+    public Population(String area, int population, int urban, float urbanPercentage, float rural, float ruralPercentage) {
         this.area = area;
         this.population = population;
         this.urban = urban;
+        this.urbanPercentage = urbanPercentage;
         this.rural = rural;
+        this.ruralPercentage = ruralPercentage;
     }
 
     /**
@@ -47,17 +59,31 @@ public class Population {
     }
 
     /**
-     * Get urban population percentage of the continent/region/country
+     * Get urban population of the continent/region/country
      */
     public float getUrban() {
         return urban;
     }
 
     /**
-     * Get rural population percentage of the continent/region/country
+     * Get urban population percentage of the continent/region/country
+     */
+    public float getUrbanPercentage() {
+        return urbanPercentage;
+    }
+
+    /**
+     * Get rural population of the continent/region/country
      */
     public float getRural() {
         return rural;
+    }
+
+    /**
+     * Get rural population percentage of the continent/region/country
+     */
+    public float getRuralPercentage() {
+        return ruralPercentage;
     }
 
     /**
@@ -68,8 +94,10 @@ public class Population {
         return "Population{" +
                 "area=" + area +
                 ", population=" + population +
-                ", urban=" + urban + "%" +
-                ", rural=" + rural + "%" +
+                ", urban=" + urban +
+                ", urbanPercentage=" + urbanPercentage + "%" +
+                ", rural=" + rural +
+                ", ruralPercentage=" + ruralPercentage + "%" +
                 '}';
     }
 }
