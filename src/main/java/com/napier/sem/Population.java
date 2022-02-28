@@ -25,7 +25,7 @@ public class Population {
     /**
      * Rural population of the continent/region/country
      */
-    private float rural;
+    private int rural;
 
     /**
      * Rural population percentage of the continent/region/country
@@ -35,7 +35,7 @@ public class Population {
     /**
      * Constructor for population
      */
-    public Population(String area, int population, int urban, float urbanPercentage, float rural, float ruralPercentage) {
+    public Population(String area, int population, int urban, float urbanPercentage, int rural, float ruralPercentage) {
         this.area = area;
         this.population = population;
         this.urban = urban;
@@ -61,7 +61,7 @@ public class Population {
     /**
      * Get urban population of the continent/region/country
      */
-    public float getUrban() {
+    public int getUrban() {
         return urban;
     }
 
@@ -75,7 +75,7 @@ public class Population {
     /**
      * Get rural population of the continent/region/country
      */
-    public float getRural() {
+    public int getRural() {
         return rural;
     }
 
