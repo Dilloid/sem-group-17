@@ -56,7 +56,7 @@ public class Population {
     @Override
     public String toString() {
         return "Population{" +
-                "area='" + area +
+                "area=" + area +
                 ", population=" + population +
                 ", urban=" + urban + "%" +
                 ", rural=" + rural + "%" +
