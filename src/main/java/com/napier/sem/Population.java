@@ -23,6 +23,16 @@ public class Population {
     private float rural;
 
     /**
+     * Constructor for population
+     */
+    public Population(String area, int population, float urban, float rural) {
+        this.area = area;
+        this.population = population;
+        this.urban = urban;
+        this.rural = rural;
+    }
+
+    /**
      * Get name of the continent/region/country
      */
     public String getArea() {
