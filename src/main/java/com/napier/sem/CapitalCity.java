@@ -18,6 +18,15 @@ public class CapitalCity {
     private int population;
 
     /**
+     * Constructor for capital city
+     */
+    public CapitalCity(String name, String country, int population) {
+        this.name = name;
+        this.country = country;
+        this.population = population;
+    }
+
+    /**
      * Get name of the capital city
      */
     public String getName() {
