@@ -3,14 +3,29 @@ package com.napier.sem;
 public class City {
 
     /**
+     * Constructor for City class
+     * @param name name of the city
+     * @param countryCode country of the city as a country code
+     * @param district district of the city
+     * @param population population of the city
+     */
+    public City(String name, String countryCode, String district, int population)
+    {
+        this.name = name;
+        this.countryCode = countryCode;
+        this.district = district;
+        this.population = population;
+    }
+
+    /**
      * Name of the city
      */
     private String name;
 
     /**
-     * Country of the city
+     * Country of the city as a country code
      */
-    private String country;
+    private String countryCode;
 
     /**
      * District of the city
@@ -30,10 +45,10 @@ public class City {
     }
 
     /**
-     * Get country of the city
+     * Get country of the city as a country code
      */
-    public String getCountry() {
-        return country;
+    public String getCountryCode() {
+        return countryCode;
     }
 
     /**
@@ -57,9 +72,9 @@ public class City {
     public String toString() {
         return "City{" +
                 "name=" + name +
-                ", country='" + country +
-                ", district='" + district +
+                ", countryCode=" + countryCode +
+                ", district=" + district +
                 ", population=" + population +
-                '}';
+                "}";
     }
 }
