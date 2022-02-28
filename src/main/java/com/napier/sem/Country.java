@@ -8,17 +8,17 @@ public class Country {
      * @param name name of the country
      * @param continent continent of the country
      * @param region region of the country
-     * @param capital capital city of the country
+     * @param capitalID ID of the capital city of the country
      * @param population population of the country
      */
-    public Country(String code, String name, String continent, String region, String capital, int population)
+    public Country(String code, String name, String continent, String region, int population, int capitalID)
     {
         this.code = code;
         this.name = name;
         this.continent = continent;
         this.region = region;
-        this.capital = capital;
         this.population = population;
+        this.capitalID = capitalID;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Country {
     /**
      * Capital city of the country
      */
-    private String capital;
+    private int capitalID;
 
     /**
      * Get country code for the country
@@ -89,8 +89,8 @@ public class Country {
     /**
      * Get capital city of the country
      */
-    public String getCapital() {
-        return capital;
+    public int getCapitalID() {
+        return capitalID;
     }
 
     /**
@@ -104,7 +104,7 @@ public class Country {
                 ", continent=" + continent +
                 ", region=" + region +
                 ", population=" + population +
-                ", capital=" + capital +
+                ", capitalID=" + capitalID +
                 "}";
     }
 }
