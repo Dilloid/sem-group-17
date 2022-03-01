@@ -142,8 +142,8 @@ public class App
             }
 
             //Output the area population info
-            System.out.println(populations.get(0).toString());
-            //This is the temporary output for now
+            System.out.println(String.format("%-18s %-12s %-12s %-12s %-12s %-12s", areaType, "Population", "Urban pop", "Percentage","Rural pop","Percentage"));
+            System.out.println(String.format("%-18s %-12s %-12s %-12s %-12s %-12s", populations.get(0).getArea(), populations.get(0).getPopulation(), populations.get(0).getUrban(), populations.get(0).getUrbanPercentage()+"%", populations.get(0).getRural(), populations.get(0).getRuralPercentage()+"%"));
         }
         catch (Exception e)
         {
