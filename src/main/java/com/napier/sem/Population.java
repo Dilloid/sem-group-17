@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+import java.math.BigInteger;
+
 public class Population {
 
     /**
@@ -10,12 +12,12 @@ public class Population {
     /**
      * Population of the continent/region/country
      */
-    private int population;
+    private BigInteger population;
 
     /**
      * Urban population of the continent/region/country
      */
-    private int urban;
+    private BigInteger urban;
 
     /**
      * Urban population percentage of the continent/region/country
@@ -25,7 +27,7 @@ public class Population {
     /**
      * Rural population of the continent/region/country
      */
-    private float rural;
+    private BigInteger rural;
 
     /**
      * Rural population percentage of the continent/region/country
@@ -33,9 +35,15 @@ public class Population {
     private float ruralPercentage;
 
     /**
-     * Constructor for population
+     * Constructor for Population
+     * @param area Area Name
+     * @param population Total Population
+     * @param urban Urban Population
+     * @param urbanPercentage Urban Percentage
+     * @param rural Rural Population
+     * @param ruralPercentage Rural Percentage
      */
-    public Population(String area, int population, int urban, float urbanPercentage, float rural, float ruralPercentage) {
+    public Population(String area, BigInteger population, BigInteger urban, float urbanPercentage, BigInteger rural, float ruralPercentage) {
         this.area = area;
         this.population = population;
         this.urban = urban;
@@ -54,14 +62,14 @@ public class Population {
     /**
      * Get population of the continent/region/country
      */
-    public int getPopulation() {
+    public BigInteger getPopulation() {
         return population;
     }
 
     /**
      * Get urban population of the continent/region/country
      */
-    public float getUrban() {
+    public BigInteger getUrban() {
         return urban;
     }
 
@@ -75,7 +83,7 @@ public class Population {
     /**
      * Get rural population of the continent/region/country
      */
-    public float getRural() {
+    public BigInteger getRural() {
         return rural;
     }
 

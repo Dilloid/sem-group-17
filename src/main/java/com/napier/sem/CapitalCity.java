@@ -19,6 +19,9 @@ public class CapitalCity {
 
     /**
      * Constructor for capital city
+     * @param name Name of Capital City
+     * @param country Name of Country
+     * @param population Population of Capital City
      */
     public CapitalCity(String name, String country, int population) {
         this.name = name;
