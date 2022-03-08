@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class App
 {
@@ -12,6 +13,14 @@ public class App
 
         // Connect to database
         a.connect();
+
+        // Create new ArrayList of Country objects and fill it with the requested report
+        ArrayList<Country> countryList = a.topNCountriesByPopulation("Continent", "North America", 10);
+
+        // For each Country in the list, print the details of the object using its custom toString method
+        for (Country c : countryList) {
+            System.out.println(c.toString());
+        }
 
         // Disconnect from database
         a.disconnect();
@@ -82,4 +91,90 @@ public class App
         }
     }
 
+    public ArrayList<Country> countriesByPopulation(String area, String input) {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Capital, Population " +
+                    "FROM country " +
+                    "WHERE " + area + "='" + input + "' " +
+                    "ORDER BY Population DESC";
+
+            // Execute SQL statement and return rows as a ResultSet object
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Create a temporary ArrayList to store incoming results
+            ArrayList<Country> countryList = new ArrayList<>();
+
+            // While there is still a next row in the ResultSet
+            while (rset.next()) {
+                // Create a new Country object and add it to the list
+                countryList.add(new Country(
+                        rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getInt("Population"),
+                        rset.getInt("Capital")
+                ));
+            }
+
+            // Return the ArrayList of Country objects
+            return countryList;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to generate report.");
+            return null;
+        }
+    }
+
+    public ArrayList<Country> topNCountriesByPopulation(String area, String input, int n) {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Capital, Population " +
+                            "FROM country " +
+                            "WHERE " + area + "='" + input + "' " +
+                            "ORDER BY Population DESC " +
+                            "LIMIT " + n;
+
+            // Execute SQL statement and return rows as a ResultSet object
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Create a temporary ArrayList to store incoming results
+            ArrayList<Country> countryList = new ArrayList<>();
+
+            // While there is still a next row in the ResultSet
+            while (rset.next()) {
+                // Create a new Country object and add it to the list
+                countryList.add(new Country(
+                        rset.getString("Code"),
+                        rset.getString("Name"),
+                        rset.getString("Continent"),
+                        rset.getString("Region"),
+                        rset.getInt("Population"),
+                        rset.getInt("Capital")
+                ));
+            }
+
+            // Return the ArrayList of Country objects
+            return countryList;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to generate report.");
+            return null;
+        }
+    }
 }
