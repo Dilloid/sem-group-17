@@ -33,7 +33,13 @@ public class Population {
     private float ruralPercentage;
 
     /**
-     * Constructor for population
+     * Constructor for Population
+     * @param area Area Name
+     * @param population Total Population
+     * @param urban Urban Population
+     * @param urbanPercentage Urban Percentage
+     * @param rural Rural Population
+     * @param ruralPercentage Rural Percentage
      */
     public Population(String area, int population, int urban, float urbanPercentage, int rural, float ruralPercentage) {
         this.area = area;

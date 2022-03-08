@@ -22,10 +22,13 @@ public class App
             System.out.println(c.toString());
         }
 
+        // Generate report of the population of Asia
         a.populationRuralUrban("Continent","Asia");
 
+        // Generate report of the population of the Caribbean
         a.populationRuralUrban("Region","Caribbean");
 
+        // Generate report of the population of Asia
         a.populationRuralUrban("Country","France");
 
         // Disconnect from database
@@ -97,6 +100,12 @@ public class App
         }
     }
 
+    /**
+     * Gets a list of all countries in an area in order of population
+     * @param area Name of area
+     * @param input Country
+     * @return Arraylist of countries and their relevant info
+     */
     public ArrayList<Country> countriesByPopulation(String area, String input) {
         try
         {
@@ -140,6 +149,13 @@ public class App
         }
     }
 
+    /**
+     * Gets a list of N countries in an area in order of population
+     * @param area Name of area
+     * @param input Country
+     * @param n Number to display
+     * @return Arraylist of countries and their relevant info
+     */
     public ArrayList<Country> topNCountriesByPopulation(String area, String input, int n) {
         try
         {
@@ -196,7 +212,7 @@ public class App
         String areaTyped;
 
         //If the area type is country
-        if(areaType == "Country")
+        if(areaType.equals("Country"))
         {
             //Use the column called "Name"
             areaTyped = "Name";

@@ -3,25 +3,6 @@ package com.napier.sem;
 public class Country {
 
     /**
-     * Constructor for Country class
-     * @param code country code
-     * @param name name of the country
-     * @param continent continent of the country
-     * @param region region of the country
-     * @param capitalID ID of the capital city of the country
-     * @param population population of the country
-     */
-    public Country(String code, String name, String continent, String region, int population, int capitalID)
-    {
-        this.code = code;
-        this.name = name;
-        this.continent = continent;
-        this.region = region;
-        this.population = population;
-        this.capitalID = capitalID;
-    }
-
-    /**
      * Country code
      */
     private String code;
@@ -50,6 +31,25 @@ public class Country {
      * Capital city of the country
      */
     private int capitalID;
+
+    /**
+     * Constructor for Country class
+     * @param code country code
+     * @param name name of the country
+     * @param continent continent of the country
+     * @param region region of the country
+     * @param capitalID ID of the capital city of the country
+     * @param population population of the country
+     */
+    public Country(String code, String name, String continent, String region, int population, int capitalID)
+    {
+        this.code = code;
+        this.name = name;
+        this.continent = continent;
+        this.region = region;
+        this.population = population;
+        this.capitalID = capitalID;
+    }
 
     /**
      * Get country code for the country
