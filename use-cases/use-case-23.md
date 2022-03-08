@@ -48,6 +48,6 @@ None.
 
 None.
 
-##SCHEDULE
+## SCHEDULE
 
 **DUE DATE**: Release 1.0

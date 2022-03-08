@@ -36,10 +36,10 @@ A capital city report by region is requested.
 
 ## MAIN SUCCESS SCENARIO
 
-1.Organisation Employee Requests capital city report.
-2.Organisation Employee captures region name to get capital city information for.
-3.Organisation Employee extracts current capital city statistics for all capital cities in a region.
-4.Organisation Employee Provides report.
+1. Organisation Employee Requests capital city report.
+2. Organisation Employee captures region name to get capital city information for.
+3. Organisation Employee extracts current capital city statistics for all capital cities in a region.
+4. Organisation Employee Provides report.
 
 ## EXTENSIONS
 
@@ -50,6 +50,6 @@ A capital city report by region is requested.
 
 None.
 
-##SCHEDULE
+## SCHEDULE
 
 **DUE DATE**: Release 1.0

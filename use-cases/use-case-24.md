@@ -50,6 +50,6 @@ A capital city report by continent is requested.
 
 None.
 
-##SCHEDULE
+## SCHEDULE
 
 **DUE DATE**: Release 1.0
