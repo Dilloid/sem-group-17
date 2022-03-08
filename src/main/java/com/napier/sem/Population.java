@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+import java.math.BigInteger;
+
 public class Population {
 
     /**
@@ -10,12 +12,12 @@ public class Population {
     /**
      * Population of the continent/region/country
      */
-    private int population;
+    private BigInteger population;
 
     /**
      * Urban population of the continent/region/country
      */
-    private int urban;
+    private BigInteger urban;
 
     /**
      * Urban population percentage of the continent/region/country
@@ -25,7 +27,7 @@ public class Population {
     /**
      * Rural population of the continent/region/country
      */
-    private int rural;
+    private BigInteger rural;
 
     /**
      * Rural population percentage of the continent/region/country
@@ -41,7 +43,7 @@ public class Population {
      * @param rural Rural Population
      * @param ruralPercentage Rural Percentage
      */
-    public Population(String area, int population, int urban, float urbanPercentage, int rural, float ruralPercentage) {
+    public Population(String area, BigInteger population, BigInteger urban, float urbanPercentage, BigInteger rural, float ruralPercentage) {
         this.area = area;
         this.population = population;
         this.urban = urban;
@@ -60,14 +62,14 @@ public class Population {
     /**
      * Get population of the continent/region/country
      */
-    public int getPopulation() {
+    public BigInteger getPopulation() {
         return population;
     }
 
     /**
      * Get urban population of the continent/region/country
      */
-    public int getUrban() {
+    public BigInteger getUrban() {
         return urban;
     }
 
@@ -81,7 +83,7 @@ public class Population {
     /**
      * Get rural population of the continent/region/country
      */
-    public int getRural() {
+    public BigInteger getRural() {
         return rural;
     }
 

@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -23,13 +24,13 @@ public class App
         }
 
         // Generate report of the population of Asia
-        a.populationRuralUrban("Continent","Asia");
+        a.populationRuralUrban("Continent");
 
         // Generate report of the population of the Caribbean
-        a.populationRuralUrban("Region","Caribbean");
+        a.populationRuralUrban("Region");
 
         // Generate report of the population of Asia
-        a.populationRuralUrban("Country","France");
+        a.populationRuralUrban("Country");
 
         // Disconnect from database
         a.disconnect();
@@ -202,10 +203,9 @@ public class App
     /**
      * Gets the population data of a given continent/region/country
      * @param areaType Area Type
-     * @param area Area Name
-     * @return The name of the area, its total population, urban population and percentage, and rural population and percentage
+     * @return ArrayList of the name of the area, its total population, urban population and percentage, and rural population and percentage
      */
-    public void populationRuralUrban(String areaType, String area)
+    public void populationRuralUrban(String areaType)
     {
 
         //String used for the area type in SQL Statement
@@ -230,30 +230,37 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT b.area, b.pop, a.urban, (a.urban/b.pop)*100 as urbanPercent,(b.pop-a.urban) AS rural, ((b.pop-a.urban)/b.pop)*100 as ruralPercent "
+                    "SELECT d.area, d.pop, d.urban, (d.urban/d.pop)*100 as urbanPercent,(d.pop-d.urban) AS rural, ((d.pop-d.urban)/d.pop)*100 as ruralPercent "
+                            + "FROM (SELECT SUM(c.urban) AS urban, SUM(c.pop) AS pop, c.area AS area "
+                            + "FROM (SELECT a.urban AS urban, b.pop AS pop, b.area AS area "
                             + "FROM (SELECT SUM(Population) AS urban, CountryCode FROM city GROUP BY CountryCode) AS a "
-                            + "JOIN " +
-                            "(SELECT Code, " + areaTyped + " AS area, Population AS pop From country) AS b " +
-                            "ON a.CountryCode = b.Code " +
-                            "WHERE b.area = '" + area + "'";
+                            + "JOIN (SELECT Code, " + areaTyped + " AS area, Population AS pop From country) AS b "
+                            + "ON a.CountryCode = b.Code) as c "
+                            + "GROUP BY c.area) as d ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
             ArrayList<Population> populations = new ArrayList<Population>();
             while (rset.next())
             {
-                Population pop = new Population(rset.getString("b.area"),
-                                                rset.getInt("b.pop"),
-                                                rset.getInt("a.urban"),
+                Population pop = new Population(rset.getString("d.area"),
+                                                new BigInteger(rset.getString("d.pop")),
+                                                new BigInteger(rset.getString("d.urban")),
                                                 rset.getFloat("urbanPercent"),
-                                                rset.getInt("rural"),
+                                                new BigInteger(rset.getString("rural")),
                                                 rset.getFloat("ruralPercent"));
                 populations.add(pop);
             }
 
-            //Output the area population info
-            System.out.println(String.format("%-18s %-12s %-12s %-12s %-12s %-12s", areaType, "Population", "Urban pop", "Percentage","Rural pop","Percentage"));
-            System.out.println(String.format("%-18s %-12s %-12s %-12s %-12s %-12s", populations.get(0).getArea(), populations.get(0).getPopulation(), populations.get(0).getUrban(), populations.get(0).getUrbanPercentage()+"%", populations.get(0).getRural(), populations.get(0).getRuralPercentage()+"%"));
+            //Output the area population info headers
+            System.out.println(String.format("%-25s %-12s %-12s %-12s %-12s %-12s", areaType, "Population", "Urban pop", "Percentage","Rural pop","Percentage"));
+
+            //Output population info for each area
+            for(Population n : populations)
+            {
+                System.out.println(String.format("%-25s %-12s %-12s %-12s %-12s %-12s", n.getArea(), n.getPopulation(), n.getUrban(), n.getUrbanPercentage()+"%", n.getRural(), n.getRuralPercentage()+"%"));
+            }
+            System.out.println("");
         }
         catch (Exception e)
         {
