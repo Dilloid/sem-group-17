@@ -32,12 +32,12 @@ Organisation Employee
 
 ### Trigger
 
-A city population report is requested
+A capital city report is requested
 
 ## MAIN SUCCESS SCENARIO
 
-1.Organisation Employee Requests city population report
-2.Organisation Employee extracts current city population statistics
+1.Organisation Employee Requests capital city report
+2.Organisation Employee extracts current capital city statistics
 3.Organisation Employee Provides report
 
 ## EXTENSIONS
