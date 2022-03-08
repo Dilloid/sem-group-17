@@ -1,4 +1,4 @@
-# USE CASE: 23 Produce a report on all the capital cities in a continent organised by largest population to smallest
+# USE CASE: 24 Produce a report on all the capital cities in a continent organised by largest population to smallest
 
 ## CHARACTERISTIC INFORMATION
 
@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-Database contains the population size of all capital cities.
+We know the region. Database contains the population size of all capital cities.
 
 ### Success End Condition
 
