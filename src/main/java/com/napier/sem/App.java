@@ -15,7 +15,7 @@ public class App
         a.connect();
 
         // Create new ArrayList of Country objects and fill it with the requested report
-        ArrayList<Country> countryList = a.topNCountriesByPopulation("Continent", "Europe", 10);
+        ArrayList<Country> countryList = a.topNCountriesByPopulation("Continent", "North America", 10);
 
         // For each Country in the list, print the details of the object using its custom toString method
         for (Country c : countryList) {
