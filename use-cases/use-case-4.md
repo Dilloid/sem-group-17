@@ -1,10 +1,10 @@
-# USE CASE: 4 Generate a report on all the countries in a region, organised by largest population to smallest
+# USE CASE: 4 Produce a report on all the countries in a region, organised by largest population to smallest
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an organisation, we want to generate a report on all the countries in a region, organised by largest population to smallest
+As an *organisation employee*, I want to *produce a report on all the countries in a region, organised by largest population to smallest*.
 
 ### Scope
 
@@ -43,8 +43,8 @@ A request for the population of a region was requested by the organisation.
 
 ## EXTENSIONS
 
-1.**Region does not exist**:
-- Organisation is informed that a requested region does not/no longer exists.
+1. **Region does not exist**:
+   - Organisation is informed that a requested region does not/no longer exists.
 
 ## SUB-VARIATIONS
 

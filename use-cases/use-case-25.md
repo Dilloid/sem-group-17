@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As an *Organisation Employee* I want to produce a report on all the capital cities in a Region organised by largest population to smallest.
+As an *organisation employee*, I want to *produce a report on all the capital cities in a Region organised by largest population to smallest*.
 
 ### Scope
 
@@ -20,19 +20,19 @@ We know the region. Database contains the population size of all capital cities.
 
 ### Success End Condition
 
-A Report is available
+A Report is available.
 
 ###Failed End Condition
 
-No report is produced
+No report is produced.
 
 ### Primary Actor
 
-Organisation Employee
+Organisation Employee.
 
 ### Trigger
 
-A capital city report by region is requested
+A capital city report by region is requested.
 
 ## MAIN SUCCESS SCENARIO
 
@@ -43,8 +43,8 @@ A capital city report by region is requested
 
 ## EXTENSIONS
 
-3.Region does not exist.
-i. Organisation Employee informs Organisation Employee that that region doesn't exist
+1. **Region does not exist**:
+   - Organisation Employee informs Organisation Employee that that region doesn't exist.
 
 ## SUB-VARIATIONS
 
@@ -52,4 +52,4 @@ None.
 
 ##SCHEDULE
 
-DUE DATE: Release 1.0
+**DUE DATE**: Release 1.0

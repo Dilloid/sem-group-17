@@ -1,10 +1,10 @@
-# USE CASE: 7 Produce a report of the top N populated countries in the world, where N is provided by the user.
+# USE CASE: 10 Produce a report of the top N populated countries in a given continent, where N is provided by the user.
 
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
 
-As an *organisation*, we want to *generate a report of the top N populated countries in a given continent, where N is provided by the user*.
+As an *organisation employee*, I want to *produce a report of the top N populated countries in a given continent, where N is provided by the user*.
 
 ### Scope
 
@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Employee of the organization.
+Organisation Employee.
 
 ### Trigger
 
@@ -43,14 +43,14 @@ A request is made for a report to be provided.
 
 ## EXTENSIONS
 
-None.
+1. **Continent doesn't exist**:
+   - Employee informs their superior that the continent provided does not exist in the database.
+2. **Continent doesn't contain N countries**:
+   - Employee lists as many countries as possible, and reports to the requester that there are not enough countries in the continent to provide the top N.
 
 ## SUB-VARIATIONS
 
-1. *Continent doesn't exist*:
-    - Employee informs their superior that the continent provided does not exist in the database.
-2. *Continent doesn't contain N countries*:
-    - Employee lists as many countries as possible, and reports to the requester that there are not enough countries in the continent to provide the top N.
+None.
 
 ## SCHEDULE
 

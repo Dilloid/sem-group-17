@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As an *organisation*, we want to *generate a report of the top N populated countries in the world, where N is provided by the user*.
+As an *organisation employee*, I want to *produce a report of the top N populated countries in the world, where N is provided by the user*.
 
 ### Scope
 
@@ -28,7 +28,7 @@ No report is produced.
 
 ### Primary Actor
 
-Employee of the organization.
+Organisation Employee.
 
 ### Trigger
 

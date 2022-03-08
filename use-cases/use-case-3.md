@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-As an organisation, we want to generate a report on all the countries in a continent, organised by largest population to smallest
+As an *organisation employee*, I want to *generate a report on all the countries in a continent, organised by largest population to smallest*.
 
 ### Scope
 
@@ -43,8 +43,8 @@ A request for the population of a continent was requested by the organisation.
 
 ## EXTENSIONS
 
-1.**Continent does not exist**:
-    - Organisation is informed that a requested continent does not/no longer exists.
+1. **Continent does not exist**:
+   - Organisation is informed that a requested continent does not/no longer exists.
 
 ## SUB-VARIATIONS
 

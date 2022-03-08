@@ -4,11 +4,11 @@
 
 ### Goal in Context
 
-As an *Organisation Employee* I want to produce a report on all the capital cities in a continent organised by largest population to smallest.
+As an *organisation employee*, I want to *produce a report on all the capital cities in a continent organised by largest population to smallest*.
 
 ### Scope
 
-continent.
+Continent.
 
 ### Level
 
@@ -20,31 +20,31 @@ We know the region. Database contains the population size of all capital cities.
 
 ### Success End Condition
 
-A Report is available
+A Report is available.
 
 ###Failed End Condition
 
-No report is produced
+No report is produced.
 
 ### Primary Actor
 
-Organisation Employee
+Organisation Employee.
 
 ### Trigger
 
-A capital city report by continent is requested
+A capital city report by continent is requested.
 
 ## MAIN SUCCESS SCENARIO
 
-1.Organisation Employee Requests capital city report.
-2.Organisation Employee captures Continent name to get capital city information for.
-3.Organisation Employee extracts current capital city statistics for all capital cities in a continent.
-4.Organisation Employee Provides report.
+1. Organisation employee requests capital city report.
+2. Organisation employee captures continent name to get capital city information for.
+3. Organisation employee extracts current capital city statistics for all capital cities in a continent.
+4. Organisation employee provides report.
 
 ## EXTENSIONS
 
-3.Continent does not exist.
-    i. Organisation Employee informs Organisation Employee that that continent doesn't exist
+1. **Continent does not exist**:
+   - Organisation Employee informs Organisation Employee that that continent doesn't exist.
 
 ## SUB-VARIATIONS
 
@@ -52,4 +52,4 @@ None.
 
 ##SCHEDULE
 
-DUE DATE: Release 1.0
+**DUE DATE**: Release 1.0

@@ -4,7 +4,7 @@
 
 ### Goal in Context
 
-Organisation employee wants to produce a report detailing the population information of each region.
+As an *organisation employee*, I want to *produce a report detailing the population information of each region*.
 
 ### Scope
 
@@ -32,7 +32,7 @@ Organisation Employee.
 
 ### Trigger
 
-A regions population report is requested.
+A region population report is requested.
 
 ## MAIN SUCCESS SCENARIO
 
@@ -42,7 +42,8 @@ A regions population report is requested.
 
 ## EXTENSIONS
 
-1. **No regions exist**: Employee loses sense of self.
+1. **No regions exist**:
+   - Employee loses sense of self.
 
 ## SUB-VARIATIONS
 
@@ -50,4 +51,4 @@ None.
 
 ## SCHEDULE
 
-**DUE DATE**: 1.0
+**DUE DATE**: Release 1.0

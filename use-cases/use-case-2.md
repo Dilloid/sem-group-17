@@ -4,11 +4,11 @@
 
 ### Goal in Context
 
-As an organisation, we want to generate a report on all the countries in the world, organised by largest population to smallest.
+As an *organisation employee*, I want to *generate a report on all the countries in the world, organised by largest ion to smallest*.
 
 ### Scope
 
-The world.
+World.
 
 ### Level
 
@@ -43,8 +43,8 @@ A request for the population of the world was requested by the organisation.
 
 ## EXTENSIONS
 
-1.**Country does not exist**:
-    - Organisation is informed that a requested country does not/no longer exists.
+1. **Country does not exist**:
+   - Organisation is informed that a requested country does not/no longer exists.
 
 ## SUB-VARIATIONS
 
