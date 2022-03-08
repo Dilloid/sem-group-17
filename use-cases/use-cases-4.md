@@ -36,7 +36,7 @@ A request for the population of a region was requested by the organisation.
 
 ## MAIN SUCCESS SCENARIO
 
-1. Organisation requests a report on the population of a region from largest to smallest.
+1. Organisation requests a report on the countries of a region from largest to smallest population.
 2. Employee gets a list of all the countries in a specific region.
 3. Employee sorts the list from largest population to smallest.
 4. The employee delivers the sorted list to their organisation superior.
