@@ -10,7 +10,7 @@ public class City {
     /**
      * Country of the city as a country code
      */
-    private String countryCode;
+    private String country;
 
     /**
      * District of the city
@@ -25,14 +25,14 @@ public class City {
     /**
      * Constructor for City class
      * @param name name of the city
-     * @param countryCode country of the city as a country code
+     * @param country country of the city as a country code
      * @param district district of the city
      * @param population population of the city
      */
-    public City(String name, String countryCode, String district, int population)
+    public City(String name, String country, String district, int population)
     {
         this.name = name;
-        this.countryCode = countryCode;
+        this.country = country;
         this.district = district;
         this.population = population;
     }
@@ -47,8 +47,8 @@ public class City {
     /**
      * Get country of the city as a country code
      */
-    public String getCountryCode() {
-        return countryCode;
+    public String getCountry() {
+        return country;
     }
 
     /**
@@ -72,7 +72,7 @@ public class City {
     public String toString() {
         return "City{" +
                 "name=" + name +
-                ", countryCode=" + countryCode +
+                ", countryCode=" + country +
                 ", district=" + district +
                 ", population=" + population +
                 "}";

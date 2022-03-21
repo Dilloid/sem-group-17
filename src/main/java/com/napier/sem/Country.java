@@ -1,5 +1,7 @@
 package com.napier.sem;
 
+import java.math.BigInteger;
+
 public class Country {
 
     /**
@@ -25,12 +27,12 @@ public class Country {
     /**
      * Population of the country
      */
-    private int population;
+    private BigInteger population;
 
     /**
      * Capital city of the country
      */
-    private int capitalID;
+    private String capitalName;
 
     /**
      * Constructor for Country class
@@ -38,17 +40,17 @@ public class Country {
      * @param name name of the country
      * @param continent continent of the country
      * @param region region of the country
-     * @param capitalID ID of the capital city of the country
+     * @param capitalName ID of the capital city of the country
      * @param population population of the country
      */
-    public Country(String code, String name, String continent, String region, int population, int capitalID)
+    public Country(String code, String name, String continent, String region, BigInteger population, String capitalName)
     {
         this.code = code;
         this.name = name;
         this.continent = continent;
         this.region = region;
         this.population = population;
-        this.capitalID = capitalID;
+        this.capitalName = capitalName;
     }
 
     /**
@@ -82,15 +84,15 @@ public class Country {
     /**
      * Get population of the country
      */
-    public int getPopulation() {
+    public BigInteger getPopulation() {
         return population;
     }
 
     /**
      * Get capital city of the country
      */
-    public int getCapitalID() {
-        return capitalID;
+    public String getCapitalName() {
+        return capitalName;
     }
 
     /**
@@ -104,7 +106,7 @@ public class Country {
                 ", continent=" + continent +
                 ", region=" + region +
                 ", population=" + population +
-                ", capitalID=" + capitalID +
+                ", capitalID=" + capitalName +
                 "}";
     }
 }
