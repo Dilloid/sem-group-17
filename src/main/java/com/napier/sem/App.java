@@ -393,65 +393,79 @@ public class App
      */
     public void populationRuralUrban(String areaType)
     {
-
-        //String used for the area type in SQL Statement
-        String areaTyped;
-
-        //If the area type is country
-        if(areaType.equals("Country"))
+        // No argument
+        if(areaType == null)
         {
-            //Use the column called "Name"
-            areaTyped = "Name";
+            System.out.println("No area type specified");
         }
-        //Otherwise
+        // Not correct area type
+        else if(!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country"))
+        {
+            System.out.println("Area type is not valid");
+        }
+        // Valid area type
         else
         {
-            //The name of the area type is used
-            areaTyped = areaType;
-        }
+            //String used for the area type in SQL Statement
+            String areaTyped;
 
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT d.area, d.pop, d.urban, (d.urban/d.pop)*100 as urbanPercent,(d.pop-d.urban) AS rural, ((d.pop-d.urban)/d.pop)*100 as ruralPercent "
-                            + "FROM (SELECT SUM(c.urban) AS urban, SUM(c.pop) AS pop, c.area AS area "
-                            + "FROM (SELECT a.urban AS urban, b.pop AS pop, b.area AS area "
-                            + "FROM (SELECT SUM(Population) AS urban, CountryCode FROM city GROUP BY CountryCode) AS a "
-                            + "JOIN (SELECT Code, " + areaTyped + " AS area, Population AS pop From country) AS b "
-                            + "ON a.CountryCode = b.Code) as c "
-                            + "GROUP BY c.area) as d ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<Population> populations = new ArrayList<Population>();
-            while (rset.next())
+            //If the area type is country
+            if (areaType.equals("Country"))
             {
-                Population pop = new Population(rset.getString("d.area"),
-                                                new BigInteger(rset.getString("d.pop")),
-                                                new BigInteger(rset.getString("d.urban")),
-                                                rset.getFloat("urbanPercent"),
-                                                new BigInteger(rset.getString("rural")),
-                                                rset.getFloat("ruralPercent"));
-                populations.add(pop);
+                //Use the column called "Name"
+                areaTyped = "Name";
+            }
+            //Otherwise
+            else
+            {
+                //The name of the area type is used
+                areaTyped = areaType;
             }
 
-            //Output the area population info headers
-            System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", areaType, "Population", "Urban pop", "Percentage","Rural pop","Percentage"));
-
-            //Output population info for each area
-            for(Population n : populations)
+            try
             {
-                System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", n.getArea(), n.getPopulation(), n.getUrban(), n.getUrbanPercentage()+"%", n.getRural(), n.getRuralPercentage()+"%"));
+                // Create an SQL statement
+                Statement stmt = con.createStatement();
+                // Create string for SQL statement
+                String strSelect =
+                        "SELECT d.area, d.pop, d.urban, (d.urban/d.pop)*100 as urbanPercent,(d.pop-d.urban) AS rural, ((d.pop-d.urban)/d.pop)*100 as ruralPercent "
+                                + "FROM (SELECT SUM(c.urban) AS urban, SUM(c.pop) AS pop, c.area AS area "
+                                + "FROM (SELECT a.urban AS urban, b.pop AS pop, b.area AS area "
+                                + "FROM (SELECT SUM(Population) AS urban, CountryCode FROM city GROUP BY CountryCode) AS a "
+                                + "JOIN (SELECT Code, " + areaTyped + " AS area, Population AS pop From country) AS b "
+                                + "ON a.CountryCode = b.Code) as c "
+                                + "GROUP BY c.area) as d ";
+                // Execute SQL statement
+                ResultSet rset = stmt.executeQuery(strSelect);
+                // Extract employee information
+                ArrayList<Population> populations = new ArrayList<Population>();
+                while (rset.next()) {
+                    Population pop = new Population(rset.getString("d.area"),
+                            new BigInteger(rset.getString("d.pop")),
+                            new BigInteger(rset.getString("d.urban")),
+                            rset.getFloat("urbanPercent"),
+                            new BigInteger(rset.getString("rural")),
+                            rset.getFloat("ruralPercent"));
+                    populations.add(pop);
+                }
+
+                //Output the area population info headers
+                System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", areaType, "Population", "Urban pop", "Percentage", "Rural pop", "Percentage"));
+
+                //Output population info for each area
+                for (Population n : populations)
+                {
+                    System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", n.getArea(), n.getPopulation(), n.getUrban(), n.getUrbanPercentage() + "%", n.getRural(), n.getRuralPercentage() + "%"));
+                }
+
+                System.out.println("");
             }
-            System.out.println("");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
+
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to generate report.");
+            }
         }
     }
 
