@@ -22,12 +22,18 @@ public class AppTest
         // Bananas
     }
 
+    /**
+     * Test for Banana
+     */
     @Test
     void populationRuralUrbanBanana()
     {
         app.populationRuralUrban("Banana");
     }
 
+    /**
+     * Test for null
+     */
     @Test
     void populationRuralUrbanNull()
     {
