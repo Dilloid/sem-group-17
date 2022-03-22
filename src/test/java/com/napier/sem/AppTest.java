@@ -36,8 +36,63 @@ public class AppTest
         app.populationRuralUrban(null);
     }
 
-    void countriesByPopulationTestNull()
+    @Test
+    void countriesByPopulationTestBothNull()
     {
         app.countriesByPopulation(null, null);
+    }
+
+    @Test
+    void countriesByPopulationTestAreaTypeNull()
+    {
+        app.countriesByPopulation(null, "Europe");
+    }
+
+    @Test
+    void countriesByPopulationTestAreaTypeInvalid()
+    {
+        app.countriesByPopulation("Banana", "Europe");
+    }
+
+    @Test
+    void countriesByPopulationTestAreaNameNull()
+    {
+        app.countriesByPopulation("Continent", null);
+    }
+
+    @Test
+    void topNCountriesByPopulationTestBothNull()
+    {
+        app.topNCountriesByPopulation(null, null, 10);
+    }
+
+    @Test
+    void topNCountriesByPopulationTestAreaTypeNull()
+    {
+        app.topNCountriesByPopulation(null, "Europe", 10);
+    }
+
+    @Test
+    void topNCountriesByPopulationTestAreaTypeInvalid()
+    {
+        app.topNCountriesByPopulation("Banana", "Europe", 10);
+    }
+
+    @Test
+    void topNCountriesByPopulationTestAreaNameNull()
+    {
+        app.topNCountriesByPopulation("Continent", null, 10);
+    }
+
+    @Test
+    void topNCountriesByPopulationTestNZero()
+    {
+        app.topNCountriesByPopulation("Continent", "Europe", 0);
+    }
+
+    @Test
+    void topNCountriesByPopulationTestNMinus()
+    {
+        app.topNCountriesByPopulation("Continent", "Europe", -10);
     }
 }

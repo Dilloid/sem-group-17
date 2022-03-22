@@ -161,59 +161,84 @@ public class App
 
     /**
      * Gets a list of all countries in an area in order of population
-     * @param area Type of area
-     * @param input Name of area
+     * @param areaType Type of area
+     * @param area Name of area
      * @return Arraylist of countries and their relevant info
      */
-    public void countriesByPopulation(String area, String input)
+    public void countriesByPopulation(String areaType, String area)
     {
-        try
+        // If no areaType provided
+        if (areaType == null)
         {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT a.Code as Code, a.Name as Name, a.Continent as Continent, a.Region as Region, b.Name as Capital, a.Population as Population " +
-                            "FROM country AS a " +
-                            "JOIN city AS b " +
-                            "ON a.Capital = b.ID " +
-                            "WHERE a." + area + " = '" + input + "' " +
-                            "ORDER BY a.Population DESC ";
-
-            // Execute SQL statement and return rows as a ResultSet object
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Create a temporary ArrayList to store incoming results
-            ArrayList<Country> countryList = new ArrayList<>();
-
-            // While there is still a next row in the ResultSet
-            while (rset.next()) {
-                // Create a new Country object and add it to the list
-                countryList.add(new Country(
-                        rset.getString("Code"),
-                        rset.getString("Name"),
-                        rset.getString("Continent"),
-                        rset.getString("Region"),
-                        new BigInteger(rset.getString("Population")),
-                        rset.getString("Capital")
-                ));
-            }
-
-            //Output the area population info headers
-            System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region","Population","Capital"));
-
-            //Output population info for each area
-            for(Country c : countryList)
-            {
-                System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
-            }
-            System.out.println("");
+            System.out.println("No area type specified");
         }
-        catch (Exception e)
+        // If areaType is invalid
+        else if (!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country"))
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
+            System.out.println("Area type is not valid");
+        }
+        // If areaType is valid
+        else
+        {
+            // If no area name provided
+            if (area == null)
+            {
+                System.out.println("No area name specified");
+            }
+            // If area is also valid
+            else
+            {
+                try
+                {
+                    // Create an SQL statement
+                    Statement stmt = con.createStatement();
+
+                    // Create string for SQL statement
+                    String strSelect =
+                            "SELECT a.Code as Code, a.Name as Name, a.Continent as Continent, a.Region as Region, b.Name as Capital, a.Population as Population " +
+                                    "FROM country AS a " +
+                                    "JOIN city AS b " +
+                                    "ON a.Capital = b.ID " +
+                                    "WHERE a." + areaType + " = '" + area + "' " +
+                                    "ORDER BY a.Population DESC ";
+
+                    // Execute SQL statement and return rows as a ResultSet object
+                    ResultSet rset = stmt.executeQuery(strSelect);
+
+                    // Create a temporary ArrayList to store incoming results
+                    ArrayList<Country> countryList = new ArrayList<>();
+
+                    // While there is still a next row in the ResultSet
+                    while (rset.next())
+                    {
+                        // Create a new Country object and add it to the list
+                        countryList.add(new Country(
+                                rset.getString("Code"),
+                                rset.getString("Name"),
+                                rset.getString("Continent"),
+                                rset.getString("Region"),
+                                new BigInteger(rset.getString("Population")),
+                                rset.getString("Capital")
+                        ));
+                    }
+
+                    //Output the area population info headers
+                    System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+
+                    //Output population info for each area
+                    for (Country c : countryList)
+                    {
+                        System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
+                    }
+
+                    System.out.println("");
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                    System.out.println("Failed to generate report.");
+                }
+            }
         }
     }
 
@@ -243,7 +268,8 @@ public class App
             ArrayList<Country> countryList = new ArrayList<>();
 
             // While there is still a next row in the ResultSet
-            while (rset.next()) {
+            while (rset.next())
+            {
                 // Create a new Country object and add it to the list
                 countryList.add(new Country(
                         rset.getString("Code"),
@@ -274,61 +300,93 @@ public class App
 
     /**
      * Gets a list of the top N countries in an area in order of population
-     * @param area Type of area
-     * @param input Name of area
+     * @param areaType Type of area
+     * @param area Name of area
      * @param n Number to display
      * @return Countries and their relevant info
      */
-    public void topNCountriesByPopulation(String area, String input, int n)
+    public void topNCountriesByPopulation(String areaType, String area, int n)
     {
-        try
+        // If no areaType provided
+        if (areaType == null)
         {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT a.Code as Code, a.Name as Name, a.Continent as Continent, a.Region as Region, b.Name as Capital, a.Population as Population " +
-                    "FROM country AS a " +
-                    "JOIN city AS b " +
-                    "ON a.Capital = b.ID " +
-                    "WHERE a." + area + "='" + input + "' " +
-                    "ORDER BY a.Population DESC " +
-                    "LIMIT " + n;
-
-            // Execute SQL statement and return rows as a ResultSet object
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            // Create a temporary ArrayList to store incoming results
-            ArrayList<Country> countryList = new ArrayList<>();
-
-            // While there is still a next row in the ResultSet
-            while (rset.next()) {
-                // Create a new Country object and add it to the list
-                countryList.add(new Country(
-                        rset.getString("Code"),
-                        rset.getString("Name"),
-                        rset.getString("Continent"),
-                        rset.getString("Region"),
-                        new BigInteger(rset.getString("Population")),
-                        rset.getString("Capital")
-                ));
-            }
-
-            //Output the area population info headers
-            System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region","Population","Capital"));
-
-            //Output population info for each area
-            for(Country c : countryList)
-            {
-                System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
-            }
-            System.out.println("");
+            System.out.println("No area type specified");
         }
-        catch (Exception e)
+        // If areaType is invalid
+        else if (!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country"))
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
+            System.out.println("Area type is not valid");
+        }
+        // If areaType is valid
+        else
+        {
+            // If no area name provided
+            if (area == null)
+            {
+                System.out.println("No area name specified");
+            }
+            // If area is also valid
+            else
+            {
+                // If provided N is less than or equal to zero
+                if (n <= 0)
+                {
+                    System.out.println("N equal to or below 0");
+                }
+                else
+                {
+                    try
+                    {
+                        // Create an SQL statement
+                        Statement stmt = con.createStatement();
+
+                        // Create string for SQL statement
+                        String strSelect =
+                                "SELECT a.Code as Code, a.Name as Name, a.Continent as Continent, a.Region as Region, b.Name as Capital, a.Population as Population " +
+                                        "FROM country AS a " +
+                                        "JOIN city AS b " +
+                                        "ON a.Capital = b.ID " +
+                                        "WHERE a." + areaType + "='" + area + "' " +
+                                        "ORDER BY a.Population DESC " +
+                                        "LIMIT " + n;
+
+                        // Execute SQL statement and return rows as a ResultSet object
+                        ResultSet rset = stmt.executeQuery(strSelect);
+
+                        // Create a temporary ArrayList to store incoming results
+                        ArrayList<Country> countryList = new ArrayList<>();
+
+                        // While there is still a next row in the ResultSet
+                        while (rset.next())
+                        {
+                            // Create a new Country object and add it to the list
+                            countryList.add(new Country(
+                                    rset.getString("Code"),
+                                    rset.getString("Name"),
+                                    rset.getString("Continent"),
+                                    rset.getString("Region"),
+                                    new BigInteger(rset.getString("Population")),
+                                    rset.getString("Capital")
+                            ));
+                        }
+
+                        //Output the area population info headers
+                        System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+
+                        //Output population info for each area
+                        for (Country c : countryList)
+                        {
+                            System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
+                        }
+                        System.out.println("");
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                        System.out.println("Failed to generate report.");
+                    }
+                }
+            }
         }
     }
 
@@ -360,7 +418,8 @@ public class App
             ArrayList<Country> countryList = new ArrayList<>();
 
             // While there is still a next row in the ResultSet
-            while (rset.next()) {
+            while (rset.next())
+            {
                 // Create a new Country object and add it to the list
                 countryList.add(new Country(
                         rset.getString("Code"),
@@ -442,7 +501,8 @@ public class App
                 ResultSet rset = stmt.executeQuery(strSelect);
                 // Extract employee information
                 ArrayList<Population> populations = new ArrayList<Population>();
-                while (rset.next()) {
+                while (rset.next())
+                {
                     Population pop = new Population(rset.getString("d.area"),
                             new BigInteger(rset.getString("d.pop")),
                             new BigInteger(rset.getString("d.urban")),
@@ -713,5 +773,4 @@ public class App
             System.out.println("Failed to generate report.");
         }
     }
-
 }
