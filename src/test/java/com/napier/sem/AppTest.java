@@ -34,4 +34,24 @@ public class AppTest
         app.populationRuralUrban(null);
     }
 
+
+    @Test
+    void topNWorldCities()
+    {
+        app.topNWorldCitiesByPopulation( 0);
+    }
+
+    @Test
+    void topNCities()
+    {
+        app.topNCitiesByPopulation("Ruby", "Squirrel", 10);
+    }
+
+    @Test
+    void topNCitiesNull()
+    {
+        app.topNCitiesByPopulation(null, null, 0);
+    }
+
+
 }

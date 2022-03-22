@@ -598,70 +598,74 @@ public class App
      * @param num Number to display
      * @return Cities and their relevant info
      */
-    public void topNCitiesByPopulation(String areaType, String area, int num)
-    {
-
-        //String used for the area type in SQL Statement
-        String areaTyped;
-
-        //If the area type is country
-        if(areaType.equals("Country"))
-        {
-            //Use the column called "Name"
-            areaTyped = "a.Name";
+    public void topNCitiesByPopulation(String areaType, String area, int num) {
+        if (areaType == null) {
+            System.out.println("No area type specified");
+        } else if (!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country")) {
+            System.out.println("Area type is not valid");
         }
-        //If the area type is district
-        else if(areaType.equals("District"))
-        {
-            areaTyped = "b.District";
+        if (area == null) {
+            System.out.println("No area specified");
         }
-        //Otherwise
-        else
-        {
-            //The name of the area type is used
-            areaTyped = "a." + areaType;
-        }
+        if (num <= 0) {
+            System.out.println("Number must be greater than zero");
+        } else {
 
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT b.Name, a.Name, b.District, b.Population " +
-                            "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
-                            "JOIN country AS a " +
-                            "ON a.Code = b.CountryCode " +
-                            "WHERE " + areaTyped + " = '" + area + "' " +
-                            "ORDER BY b.Population DESC " +
-                            "LIMIT " + num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next())
-            {
-                City city = new City(rset.getString("b.Name"),
-                        rset.getString("a.Name"),
-                        rset.getString("b.District"),
-                        rset.getInt("b.Population"));
-                cities.add(city);
+
+            //String used for the area type in SQL Statement
+            String areaTyped;
+
+            //If the area type is country
+            if (areaType.equals("Country")) {
+                //Use the column called "Name"
+                areaTyped = "a.Name";
+            }
+            //If the area type is district
+            else if (areaType.equals("District")) {
+                areaTyped = "b.District";
+            }
+            //Otherwise
+            else {
+                //The name of the area type is used
+                areaTyped = "a." + areaType;
             }
 
-            //Output the area population info headers
-            System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District","Population"));
+            try {
+                // Create an SQL statement
+                Statement stmt = con.createStatement();
+                // Create string for SQL statement
+                String strSelect =
+                        "SELECT b.Name, a.Name, b.District, b.Population " +
+                                "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
+                                "JOIN country AS a " +
+                                "ON a.Code = b.CountryCode " +
+                                "WHERE " + areaTyped + " = '" + area + "' " +
+                                "ORDER BY b.Population DESC " +
+                                "LIMIT " + num;
+                // Execute SQL statement
+                ResultSet rset = stmt.executeQuery(strSelect);
+                // Extract employee information
+                ArrayList<City> cities = new ArrayList<City>();
+                while (rset.next()) {
+                    City city = new City(rset.getString("b.Name"),
+                            rset.getString("a.Name"),
+                            rset.getString("b.District"),
+                            rset.getInt("b.Population"));
+                    cities.add(city);
+                }
 
-            //Output population info for each area
-            for(City n : cities)
-            {
-                System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
+                //Output the area population info headers
+                System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District", "Population"));
+
+                //Output population info for each area
+                for (City n : cities) {
+                    System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
+                }
+                System.out.println("");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to generate report.");
             }
-            System.out.println("");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
         }
     }
 
@@ -672,6 +676,7 @@ public class App
      */
     public void topNWorldCitiesByPopulation(int num)
     {
+
         try
         {
             // Create an SQL statement
