@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 /**
- *
+ * Where all the magic happens
  */
 public class App
 {

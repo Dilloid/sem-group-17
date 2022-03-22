@@ -2,6 +2,9 @@ package com.napier.sem;
 
 import java.math.BigInteger;
 
+/**
+ * Represents a Population
+ */
 public class Population {
 
     /**
