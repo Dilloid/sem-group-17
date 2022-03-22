@@ -39,4 +39,22 @@ public class AppTest
     {
         app.citiesByPopulation(null, null);
     }
+
+    @Test
+    void citiesByPopulationTestAreaNameMisspell()
+    {
+        app.citiesByPopulation("Pariz", null);
+    }
+
+    @Test
+    void citiesByPopulationTestAreaMisspell()
+    {
+        app.citiesByPopulation(null,"Frence" );
+    }
+
+    @Test
+    void citiesByPopulationTestFrance()
+    {
+        app.citiesByPopulation("Paris","France");
+    }
 }
