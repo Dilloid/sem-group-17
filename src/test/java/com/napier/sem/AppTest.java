@@ -22,4 +22,9 @@ public class AppTest
         // Bananas;
     }
 
+    @Test
+    void citiesByPopulationTestNull()
+    {
+        app.citiesByPopulation(null, null);
+    }
 }
