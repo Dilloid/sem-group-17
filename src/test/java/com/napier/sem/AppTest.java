@@ -42,6 +42,12 @@ public class AppTest
     }
 
     @Test
+    void topNWorldCitiesNegative()
+    {
+        app.topNWorldCitiesByPopulation( -5);
+    }
+
+    @Test
     void topNCities()
     {
         app.topNCitiesByPopulation("Ruby", "Squirrel", 10);

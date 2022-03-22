@@ -674,48 +674,45 @@ public class App
      * @param num Number to display
      * @return Cities and their relevant info
      */
-    public void topNWorldCitiesByPopulation(int num)
-    {
+    public void topNWorldCitiesByPopulation(int num) {
+        if (num <= 0) {
+            System.out.println("Number must be greater than zero");
+        } else {
+            try {
+                // Create an SQL statement
+                Statement stmt = con.createStatement();
+                // Create string for SQL statement
+                String strSelect =
+                        "SELECT b.Name, a.Name, b.District, b.Population " +
+                                "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
+                                "JOIN country AS a " +
+                                "ON a.Code = b.CountryCode " +
+                                "ORDER BY b.Population DESC " +
+                                "LIMIT " + num;
+                // Execute SQL statement
+                ResultSet rset = stmt.executeQuery(strSelect);
+                // Extract employee information
+                ArrayList<City> cities = new ArrayList<City>();
+                while (rset.next()) {
+                    City city = new City(rset.getString("b.Name"),
+                            rset.getString("a.Name"),
+                            rset.getString("b.District"),
+                            rset.getInt("b.Population"));
+                    cities.add(city);
+                }
 
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT b.Name, a.Name, b.District, b.Population " +
-                            "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
-                            "JOIN country AS a " +
-                            "ON a.Code = b.CountryCode " +
-                            "ORDER BY b.Population DESC " +
-                            "LIMIT " + num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next())
-            {
-                City city = new City(rset.getString("b.Name"),
-                        rset.getString("a.Name"),
-                        rset.getString("b.District"),
-                        rset.getInt("b.Population"));
-                cities.add(city);
+                //Output the area population info headers
+                System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District", "Population"));
+
+                //Output population info for each area
+                for (City n : cities) {
+                    System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
+                }
+                System.out.println("");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to generate report.");
             }
-
-            //Output the area population info headers
-            System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District","Population"));
-
-            //Output population info for each area
-            for(City n : cities)
-            {
-                System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
-            }
-            System.out.println("");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
         }
     }
 
