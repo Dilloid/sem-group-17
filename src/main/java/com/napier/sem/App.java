@@ -11,7 +11,6 @@ public class App
 {
     public static void main(String[] args)
     {
-
         // Create new Application
         App a = new App();
 
@@ -163,7 +162,6 @@ public class App
      * Gets a list of all countries in an area in order of population
      * @param area Type of area
      * @param input Name of area
-     * @return Arraylist of countries and their relevant info
      */
     public void countriesByPopulation(String area, String input)
     {
@@ -219,7 +217,6 @@ public class App
 
     /**
      * Gets a list of all countries in the world in order of population
-     * @return Countries and their relevant info
      */
     public void worldCountriesByPopulation()
     {
@@ -277,7 +274,6 @@ public class App
      * @param area Type of area
      * @param input Name of area
      * @param n Number to display
-     * @return Countries and their relevant info
      */
     public void topNCountriesByPopulation(String area, String input, int n)
     {
@@ -335,7 +331,6 @@ public class App
     /**
      * Gets a list of the top N countries in the world in order of population
      * @param n Number to display
-     * @return Countries and their relevant info
      */
     public void topNWorldCountriesByPopulation(int n)
     {
@@ -392,7 +387,6 @@ public class App
     /**
      * Gets the population data of a given continent/region/country
      * @param areaType Area Type
-     * @return Name of the area, its total population, urban population and percentage, and rural population and percentage
      */
     public void populationRuralUrban(String areaType)
     {
@@ -476,7 +470,6 @@ public class App
      * Gets a list of all cities in an area in order of population
      * @param areaType Area Type
      * @param area Name of Area
-     * @return Cities and their relevant info
      */
     public void citiesByPopulation(String areaType, String area)
     {
@@ -546,7 +539,6 @@ public class App
 
     /**
      * Gets a list of all cities in the world in order of population
-     * @return Cities and their relevant info
      */
     public void worldCitiesByPopulation()
     {
@@ -596,7 +588,6 @@ public class App
      * @param areaType Area Type
      * @param area Name of Area
      * @param num Number to display
-     * @return Cities and their relevant info
      */
     public void topNCitiesByPopulation(String areaType, String area, int num)
     {
@@ -668,7 +659,6 @@ public class App
     /**
      * Gets a list of the top N cities in the world in order of population
      * @param num Number to display
-     * @return Cities and their relevant info
      */
     public void topNWorldCitiesByPopulation(int num)
     {
@@ -713,5 +703,4 @@ public class App
             System.out.println("Failed to generate report.");
         }
     }
-
 }
