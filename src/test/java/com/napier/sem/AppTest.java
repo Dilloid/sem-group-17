@@ -19,7 +19,19 @@ public class AppTest
     @Test
     void Bananas()
     {
-        // Bananas;
+        // Bananas
+    }
+
+    @Test
+    void populationRuralUrbanBanana()
+    {
+        app.populationRuralUrban("Banana");
+    }
+
+    @Test
+    void populationRuralUrbanNull()
+    {
+        app.populationRuralUrban(null);
     }
 
     @Test
