@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 /**
  * Where all the magic happens
+ * @author Dillon Aitken
+ * @author Jared Carr
+ * @author Ross Muir
+ * @author James Piper
  */
 public class App
 {
@@ -23,69 +27,88 @@ public class App
         // ========================================================================================
 
         // Generate report of the countries in the world by population
-        a.worldCountriesByPopulation();
+        ArrayList<Country> worldCountries = a.worldCountriesByPopulation();
+        a.printCountries(worldCountries);
 
         // Generate report of the countries in Europe by population
-        a.countriesByPopulation("Continent", "Europe");
+        ArrayList<Country> europeCountries = a.countriesByPopulation("Continent", "Europe");
+        a.printCountries(europeCountries);
 
         // Generate report of the countries in Eastern Africa by population
-        a.countriesByPopulation("Region", "Eastern Africa");
+        ArrayList<Country> eastAfricaCountries = a.countriesByPopulation("Region", "Eastern Africa");
+        a.printCountries(eastAfricaCountries);
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous countries in the world
-        a.topNWorldCountriesByPopulation(10);
+        ArrayList<Country> worldTopCountries = a.topNWorldCountriesByPopulation(10);
+        a.printCountries(worldTopCountries);
 
         // Generate report of the top 10 most populous countries in North America
-        a.topNCountriesByPopulation("Continent", "North America", 10);
+        ArrayList<Country> northAmericaTopCountries = a.topNCountriesByPopulation("Continent", "North America", 10);
+        a.printCountries(northAmericaTopCountries);
 
         // Generate report of the top 10 most populous countries in Southeast Asia
-        a.topNCountriesByPopulation("Region", "Southeast Asia", 10);
+        ArrayList<Country> southEastAsiaTopCountries = a.topNCountriesByPopulation("Region", "Southeast Asia", 10);
+        a.printCountries(southEastAsiaTopCountries);
 
         // ========================================================================================
 
         // Generate report of the cities in the world by population
-        a.worldCitiesByPopulation();
+        ArrayList<City> worldCities = a.worldCitiesByPopulation();
+        a.printCities(worldCities);
+
+        // Generate report of the cities in Oceania by population
+        ArrayList<City> oceanicCities = a.citiesByPopulation("Continent", "Oceania");
+        a.printCities(oceanicCities);
+
+        // Generate report of the cities in British Islands by population
+        ArrayList<City> britishCities =a.citiesByPopulation("Region", "British Islands");
+        a.printCities(britishCities);
 
         // Generate report of the cities in France by population
-        a.citiesByPopulation("Continent", "Oceania");
+        ArrayList<City> franceCities = a.citiesByPopulation("Country", "France");
+        a.printCities(franceCities);
 
         // Generate report of the cities in Scotland by population
-        a.citiesByPopulation("Region", "British Islands");
-
-        // Generate report of the cities in France by population
-        a.citiesByPopulation("Country", "France");
-
-        // Generate report of the cities in Scotland by population
-        a.citiesByPopulation("District", "Scotland");
+        ArrayList<City> scotlandCities = a.citiesByPopulation("District", "Scotland");
+        a.printCities(scotlandCities);
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous cities in the world by population
-        a.topNWorldCitiesByPopulation(10);
+        ArrayList<City> worldTopCities = a.topNWorldCitiesByPopulation(10);
+        a.printCities(worldTopCities);
 
         // Generate report of the top 10 most populous cities in Africa by population
-        a.topNCitiesByPopulation("Continent", "Africa", 10);
+        ArrayList<City> africaTopCities = a.topNCitiesByPopulation("Continent", "Africa", 10);
+        a.printCities(africaTopCities);
 
         // Generate report of the top 10 most populous cities in Western Europe by population
-        a.topNCitiesByPopulation("Region", "Western Europe", 10);
+        ArrayList<City> westEUTopCities = a.topNCitiesByPopulation("Region", "Western Europe", 10);
+        a.printCities(westEUTopCities);
 
         // Generate report of the top 10 most populous cities in Africa by population
-        a.topNCitiesByPopulation("Country", "Japan", 10);
+        ArrayList<City> japanTopCities = a.topNCitiesByPopulation("Country", "Japan", 10);
+        a.printCities(japanTopCities);
 
-        // Generate report of the top 10 most populous cities in Western Europe by population
-        a.topNCitiesByPopulation("District", "Florida", 10);
+        // Generate report of the top 10 most populous cities in Florida by population
+        ArrayList<City> floridaTopCities = a.topNCitiesByPopulation("District", "Florida", 10);
+        a.printCities(floridaTopCities);
 
         // ========================================================================================
 
         // Generate report of the population of Asia
-        a.populationRuralUrban("Continent");
+        ArrayList<Population> continentPops = a.populationRuralUrban("Continent");
+        a.printPopulations(continentPops);
 
         // Generate report of the population of the Caribbean
-        a.populationRuralUrban("Region");
+        ArrayList<Population> regionPops = a.populationRuralUrban("Region");
+        a.printPopulations(regionPops);
 
         // Generate report of the population of Asia
-        a.populationRuralUrban("Country");
+        ArrayList<Population> countryPops = a.populationRuralUrban("Country");
+        a.printPopulations(countryPops);
 
         // ========================================================================================
 
@@ -159,22 +182,137 @@ public class App
     }
 
     /**
+     * Prints list of cities
+     * @param cities cities to be printed
+     */
+    public void printCities(ArrayList<City> cities)
+    {
+        if(cities == null)
+        {
+            System.out.println("No cities list has been given");
+        }
+        else if(cities.size() < 1)
+        {
+            System.out.println("No cities to print");
+        }
+        else
+        {
+            //Output the area population info headers
+            System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District", "Population"));
+
+            //Output population info for each area
+            for (City n : cities)
+            {
+                System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
+            }
+            System.out.println("");
+        }
+    }
+
+    /**
+     * Prints list of countries
+     * @param countries countries to be printed
+     */
+    public void printCountries(ArrayList<Country> countries)
+    {
+        if(countries == null)
+        {
+            System.out.println("No countries list has been given");
+        }
+        else if(countries.size() < 1)
+        {
+            System.out.println("No countries to print");
+        }
+        else
+        {
+            //Output the area population info headers
+            System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+
+            //Output population info for each area
+            for (Country c : countries)
+            {
+                System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
+            }
+            System.out.println("");
+        }
+    }
+
+    /**
+     * Prints list of populations
+     * @param populations populations to be printed
+     */
+    public void printPopulations(ArrayList<Population> populations)
+    {
+        if(populations == null)
+        {
+            System.out.println("No populations list has been given");
+        }
+        else if(populations.size() < 1)
+        {
+            System.out.println("No populations to print");
+        }
+        else
+        {
+            //Output the area population info headers
+            System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", "Location", "Population", "Urban pop", "Percentage", "Rural pop", "Percentage"));
+
+            //Output population info for each area
+            for (Population n : populations)
+            {
+                System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", n.getArea(), n.getPopulation(), n.getUrban(), n.getUrbanPercentage() + "%", n.getRural(), n.getRuralPercentage() + "%"));
+            }
+
+            System.out.println("");
+        }
+    }
+
+    /**
+     * Prints list of capital cities
+     * @param cities Capital cities to be printed
+     */
+    public void printCapitalCities(ArrayList<CapitalCity> cities)
+    {
+        if(cities == null)
+        {
+            System.out.println("No capital cities list has been given");
+        }
+        else if(cities.size() < 1)
+        {
+            System.out.println("No capital cities to print");
+        }
+        else
+        {
+            //Output the area population info headers
+            System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "Population"));
+
+            //Output population info for each area
+            for (CapitalCity n : cities)
+            {
+                System.out.println(String.format("%-25s %-30s %-12s", n.getName(), n.getCountry(), n.getPopulation()));
+            }
+            System.out.println("");
+        }
+    }
+
+    /**
      * Gets a list of all countries in an area in order of population
      * @param areaType Type of area
      * @param area Name of area
      * @return Arraylist of countries and their relevant info
      */
-    public void countriesByPopulation(String areaType, String area)
+    public ArrayList<Country> countriesByPopulation(String areaType, String area)
     {
         // If no areaType provided
         if (areaType == null)
         {
             System.out.println("No area type specified");
+            return null;
         }
         // If areaType is invalid
         else if (!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country"))
         {
             System.out.println("Area type is not valid");
+            return null;
         }
         // If areaType is valid
         else
@@ -183,6 +321,7 @@ public class App
             if (area == null)
             {
                 System.out.println("No area name specified");
+                return null;
             }
             // If area is also valid
             else
@@ -221,21 +360,13 @@ public class App
                         ));
                     }
 
-                    //Output the area population info headers
-                    System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
-
-                    //Output population info for each area
-                    for (Country c : countryList)
-                    {
-                        System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
-                    }
-
-                    System.out.println("");
+                    return countryList;
                 }
                 catch (Exception e)
                 {
                     System.out.println(e.getMessage());
                     System.out.println("Failed to generate report.");
+                    return null;
                 }
             }
         }
@@ -245,7 +376,7 @@ public class App
      * Gets a list of all countries in the world in order of population
      * @return Countries and their relevant info
      */
-    public void worldCountriesByPopulation()
+    public ArrayList<Country> worldCountriesByPopulation()
     {
         try
         {
@@ -280,20 +411,13 @@ public class App
                 ));
             }
 
-            //Output the area population info headers
-            System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region","Population","Capital"));
-
-            //Output population info for each area
-            for(Country c : countryList)
-            {
-                System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
-            }
-            System.out.println("");
+            return countryList;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to generate report.");
+            return null;
         }
     }
 
@@ -304,17 +428,19 @@ public class App
      * @param n Number to display
      * @return Countries and their relevant info
      */
-    public void topNCountriesByPopulation(String areaType, String area, int n)
+    public ArrayList<Country> topNCountriesByPopulation(String areaType, String area, int n)
     {
         // If no areaType provided
         if (areaType == null)
         {
             System.out.println("No area type specified");
+            return null;
         }
         // If areaType is invalid
         else if (!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country"))
         {
             System.out.println("Area type is not valid");
+            return null;
         }
         // If areaType is valid
         else
@@ -323,6 +449,7 @@ public class App
             if (area == null)
             {
                 System.out.println("No area name specified");
+                return null;
             }
             // If area is also valid
             else
@@ -331,6 +458,7 @@ public class App
                 if (n <= 0)
                 {
                     System.out.println("N equal to or below 0");
+                    return null;
                 }
                 else
                 {
@@ -369,20 +497,13 @@ public class App
                             ));
                         }
 
-                        //Output the area population info headers
-                        System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
-
-                        //Output population info for each area
-                        for (Country c : countryList)
-                        {
-                            System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
-                        }
-                        System.out.println("");
+                        return countryList;
                     }
                     catch (Exception e)
                     {
                         System.out.println(e.getMessage());
                         System.out.println("Failed to generate report.");
+                        return null;
                     }
                 }
             }
@@ -394,8 +515,9 @@ public class App
      * @param n Number to display
      * @return Countries and their relevant info
      */
-    public void topNWorldCountriesByPopulation(int n)
+    public ArrayList<Country> topNWorldCountriesByPopulation(int n)
     {
+
         try
         {
             // Create an SQL statement
@@ -430,20 +552,13 @@ public class App
                 ));
             }
 
-            //Output the area population info headers
-            System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", "Code", "Name", "Continent", "Region","Population","Capital"));
-
-            //Output population info for each area
-            for(Country c : countryList)
-            {
-                System.out.println(String.format("%-8s %-30s %-15s %-25s %-12s %-25s", c.getCode(), c.getName(), c.getContinent(), c.getRegion(), c.getPopulation(), c.getCapitalName()));
-            }
-            System.out.println("");
+            return countryList;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to generate report.");
+            return null;
         }
     }
 
@@ -452,17 +567,19 @@ public class App
      * @param areaType Area Type
      * @return Name of the area, its total population, urban population and percentage, and rural population and percentage
      */
-    public void populationRuralUrban(String areaType)
+    public ArrayList<Population> populationRuralUrban(String areaType)
     {
         // No argument
         if(areaType == null)
         {
             System.out.println("No area type specified");
+            return null;
         }
         // Not correct area type
         else if(!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country"))
         {
             System.out.println("Area type is not valid");
+            return null;
         }
         // Valid area type
         else
@@ -511,22 +628,14 @@ public class App
                     populations.add(pop);
                 }
 
-                //Output the area population info headers
-                System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", areaType, "Population", "Urban pop", "Percentage", "Rural pop", "Percentage"));
-
-                //Output population info for each area
-                for (Population n : populations)
-                {
-                    System.out.println(String.format("%-30s %-12s %-12s %-12s %-12s %-12s", n.getArea(), n.getPopulation(), n.getUrban(), n.getUrbanPercentage() + "%", n.getRural(), n.getRuralPercentage() + "%"));
-                }
-
-                System.out.println("");
+                return populations;
             }
 
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
                 System.out.println("Failed to generate report.");
+                return null;
             }
         }
     }
@@ -537,20 +646,159 @@ public class App
      * @param area Name of Area
      * @return Cities and their relevant info
      */
-    public void citiesByPopulation(String areaType, String area)
+    public ArrayList<City> citiesByPopulation(String areaType, String area)
     {
         //No argument
         if(areaType == null)
         {
             System.out.println("No area type has been specified");
+            return null;
+        }
+        else if(area == null)
+        {
+            System.out.println("No area has been specified");
+            return null;
         }
         //Incorrect area type
         else if(!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country") && !areaType.equals("District"))
         {
             System.out.println("Invalid Area type");
+            return null;
         }
         //Area type is valid
-        else {
+        else
+        {
+            //String used for the area type in SQL Statement
+            String areaTyped;
+
+            //If the area type is country
+            if (areaType.equals("Country"))
+            {
+                //Use the column called "Name"
+                areaTyped = "a.Name";
+            }
+            //If the area type is district
+            else if (areaType.equals("District"))
+            {
+                areaTyped = "b.District";
+            }
+            //Otherwise
+            else
+            {
+                //The name of the area type is used
+                areaTyped = "a." + areaType;
+            }
+
+            try
+            {
+                // Create an SQL statement
+                Statement stmt = con.createStatement();
+                // Create string for SQL statement
+                String strSelect =
+                        "SELECT b.Name, a.Name, b.District, b.Population " +
+                                "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
+                                "JOIN country AS a " +
+                                "ON b.CountryCode = a.Code " +
+                                "WHERE " + areaTyped + " = '" + area + "' " +
+                                "ORDER BY b.Population DESC";
+                // Execute SQL statement
+                ResultSet rset = stmt.executeQuery(strSelect);
+                // Extract employee information
+                ArrayList<City> cities = new ArrayList<City>();
+                while (rset.next())
+                {
+                    City city = new City(rset.getString("b.Name"),
+                            rset.getString("a.Name"),
+                            rset.getString("b.District"),
+                            rset.getInt("b.Population"));
+                    cities.add(city);
+                }
+
+                return cities;
+
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to generate report.");
+                return null;
+            }
+        }
+    }
+
+    /**
+     * Gets a list of all cities in the world in order of population
+     * @return Cities and their relevant info
+     */
+    public ArrayList<City> worldCitiesByPopulation()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT b.Name, a.Name, b.District, b.Population " +
+                            "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
+                            "JOIN country AS a " +
+                            "ON b.CountryCode = a.Code " +
+                            "ORDER BY b.Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Extract employee information
+            ArrayList<City> cities = new ArrayList<City>();
+            while (rset.next())
+            {
+                City city = new City(rset.getString("b.Name"),
+                        rset.getString("a.Name"),
+                        rset.getString("b.District"),
+                        rset.getInt("b.Population"));
+                cities.add(city);
+            }
+
+            return cities;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to generate report.");
+            return null;
+        }
+    }
+
+    /**
+     * Gets a list of the top N cities in an area in order of population
+     * @param areaType Area Type
+     * @param area Name of Area
+     * @param num Number to display
+     * @return Cities and their relevant info
+     */
+    public ArrayList<City> topNCitiesByPopulation(String areaType, String area, int num)
+    {
+        if (areaType == null)
+        {
+            System.out.println("No area type specified");
+            return null;
+        }
+        else if (!areaType.equals("Continent") && !areaType.equals("Region") && !areaType.equals("Country") && !areaType.equals("District"))
+        {
+            System.out.println("Area type is not valid");
+            return null;
+        }
+        else if (area == null)
+        {
+            System.out.println("No area specified");
+            return null;
+        }
+        else if (num <= 0)
+        {
+            System.out.println("Number must be greater than zero");
+            return null;
+        }
+        else
+        {
+
+
             //String used for the area type in SQL Statement
             String areaTyped;
 
@@ -577,9 +825,10 @@ public class App
                         "SELECT b.Name, a.Name, b.District, b.Population " +
                                 "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
                                 "JOIN country AS a " +
-                                "ON b.CountryCode = a.Code " +
+                                "ON a.Code = b.CountryCode " +
                                 "WHERE " + areaTyped + " = '" + area + "' " +
-                                "ORDER BY b.Population DESC";
+                                "ORDER BY b.Population DESC " +
+                                "LIMIT " + num;
                 // Execute SQL statement
                 ResultSet rset = stmt.executeQuery(strSelect);
                 // Extract employee information
@@ -592,139 +841,14 @@ public class App
                     cities.add(city);
                 }
 
-                //Output the area population info headers
-                System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District", "Population"));
-
-                //Output population info for each area
-                for (City n : cities) {
-                    System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
-                }
-                System.out.println("");
-            } catch (Exception e) {
+                return cities;
+            }
+            catch (Exception e)
+            {
                 System.out.println(e.getMessage());
                 System.out.println("Failed to generate report.");
+                return null;
             }
-        }
-    }
-
-    /**
-     * Gets a list of all cities in the world in order of population
-     * @return Cities and their relevant info
-     */
-    public void worldCitiesByPopulation()
-    {
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT b.Name, a.Name, b.District, b.Population " +
-                            "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
-                            "JOIN country AS a " +
-                            "ON b.CountryCode = a.Code " +
-                            "ORDER BY b.Population DESC";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next())
-            {
-                City city = new City(rset.getString("b.Name"),
-                        rset.getString("a.Name"),
-                        rset.getString("b.District"),
-                        rset.getInt("b.Population"));
-                cities.add(city);
-            }
-
-            //Output the area population info headers
-            System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District","Population"));
-
-            //Output population info for each area
-            for(City n : cities)
-            {
-                System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
-            }
-            System.out.println("");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
-        }
-    }
-
-    /**
-     * Gets a list of the top N cities in an area in order of population
-     * @param areaType Area Type
-     * @param area Name of Area
-     * @param num Number to display
-     * @return Cities and their relevant info
-     */
-    public void topNCitiesByPopulation(String areaType, String area, int num)
-    {
-
-        //String used for the area type in SQL Statement
-        String areaTyped;
-
-        //If the area type is country
-        if(areaType.equals("Country"))
-        {
-            //Use the column called "Name"
-            areaTyped = "a.Name";
-        }
-        //If the area type is district
-        else if(areaType.equals("District"))
-        {
-            areaTyped = "b.District";
-        }
-        //Otherwise
-        else
-        {
-            //The name of the area type is used
-            areaTyped = "a." + areaType;
-        }
-
-        try
-        {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT b.Name, a.Name, b.District, b.Population " +
-                            "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
-                            "JOIN country AS a " +
-                            "ON a.Code = b.CountryCode " +
-                            "WHERE " + areaTyped + " = '" + area + "' " +
-                            "ORDER BY b.Population DESC " +
-                            "LIMIT " + num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next())
-            {
-                City city = new City(rset.getString("b.Name"),
-                        rset.getString("a.Name"),
-                        rset.getString("b.District"),
-                        rset.getInt("b.Population"));
-                cities.add(city);
-            }
-
-            //Output the area population info headers
-            System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District","Population"));
-
-            //Output population info for each area
-            for(City n : cities)
-            {
-                System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
-            }
-            System.out.println("");
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
         }
     }
 
@@ -733,47 +857,47 @@ public class App
      * @param num Number to display
      * @return Cities and their relevant info
      */
-    public void topNWorldCitiesByPopulation(int num)
+    public ArrayList<City> topNWorldCitiesByPopulation(int num)
     {
-        try
+        if (num <= 0)
         {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT b.Name, a.Name, b.District, b.Population " +
-                            "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
-                            "JOIN country AS a " +
-                            "ON a.Code = b.CountryCode " +
-                            "ORDER BY b.Population DESC " +
-                            "LIMIT " + num;
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-            // Extract employee information
-            ArrayList<City> cities = new ArrayList<City>();
-            while (rset.next())
-            {
-                City city = new City(rset.getString("b.Name"),
-                        rset.getString("a.Name"),
-                        rset.getString("b.District"),
-                        rset.getInt("b.Population"));
-                cities.add(city);
-            }
-
-            //Output the area population info headers
-            System.out.println(String.format("%-25s %-30s %-25s %-12s", "City", "Country", "District","Population"));
-
-            //Output population info for each area
-            for(City n : cities)
-            {
-                System.out.println(String.format("%-25s %-30s %-25s %-12s", n.getName(), n.getCountry(), n.getDistrict(), n.getPopulation()));
-            }
-            System.out.println("");
+            System.out.println("Number must be greater than zero");
+            return null;
         }
-        catch (Exception e)
+        else
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to generate report.");
+            try
+            {
+                // Create an SQL statement
+                Statement stmt = con.createStatement();
+                // Create string for SQL statement
+                String strSelect =
+                        "SELECT b.Name, a.Name, b.District, b.Population " +
+                                "FROM (SELECT * FROM city ORDER BY Population DESC) AS b " +
+                                "JOIN country AS a " +
+                                "ON a.Code = b.CountryCode " +
+                                "ORDER BY b.Population DESC " +
+                                "LIMIT " + num;
+                // Execute SQL statement
+                ResultSet rset = stmt.executeQuery(strSelect);
+                // Extract employee information
+                ArrayList<City> cities = new ArrayList<City>();
+                while (rset.next()) {
+                    City city = new City(rset.getString("b.Name"),
+                            rset.getString("a.Name"),
+                            rset.getString("b.District"),
+                            rset.getInt("b.Population"));
+                    cities.add(city);
+                }
+
+                return cities;
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to generate report.");
+                return null;
+            }
         }
     }
 }
