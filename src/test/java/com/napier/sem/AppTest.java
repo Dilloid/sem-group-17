@@ -101,4 +101,28 @@ public class AppTest
     {
         app.topNCountriesByPopulation("Continent", "Europe", -10);
     }
+
+    @Test
+    void citiesByPopulationTestNull()
+    {
+        app.citiesByPopulation(null, null);
+    }
+
+    @Test
+    void citiesByPopulationTestAreaNameMisspell()
+    {
+        app.citiesByPopulation("Pariz", null);
+    }
+
+    @Test
+    void citiesByPopulationTestAreaMisspell()
+    {
+        app.citiesByPopulation(null,"Frence" );
+    }
+
+    @Test
+    void citiesByPopulationTestFrance()
+    {
+        app.citiesByPopulation("Paris","France");
+    }
 }
