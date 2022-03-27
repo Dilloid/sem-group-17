@@ -5,7 +5,8 @@ import java.math.BigInteger;
 /**
  * Represents a Population
  */
-public class Population {
+public class Population
+{
 
     /**
      * Name of the continent/region/country
@@ -46,13 +47,38 @@ public class Population {
      * @param rural Rural Population
      * @param ruralPercentage Rural Percentage
      */
-    public Population(String area, BigInteger population, BigInteger urban, float urbanPercentage, BigInteger rural, float ruralPercentage) {
+    public Population(String area, BigInteger population, BigInteger urban, float urbanPercentage, BigInteger rural, float ruralPercentage)
+    {
         this.area = area;
         this.population = population;
         this.urban = urban;
         this.urbanPercentage = urbanPercentage;
         this.rural = rural;
         this.ruralPercentage = ruralPercentage;
+    }
+
+    /**
+     * Constructor for Population, for language reports
+     * @param name Language Name
+     * @param population Total Population of speakers
+     * @param percentage Percentage of world population
+     */
+    public Population(String name, BigInteger population, float percentage)
+    {
+        this.area = name;
+        this.population = population;
+        this.urbanPercentage = percentage;
+    }
+
+    /**
+     * Constructor for Population, for population of an area report
+     * @param name Area Name
+     * @param population Total Population of area
+     */
+    public Population(String name, BigInteger population)
+    {
+        this.area = name;
+        this.population = population;
     }
 
     /**
@@ -101,7 +127,8 @@ public class Population {
      * ToString for population
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Population{" +
                 "area=" + area +
                 ", population=" + population +

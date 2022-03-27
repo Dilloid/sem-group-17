@@ -3,7 +3,8 @@ package com.napier.sem;
 /**
  * Represents a Capital City
  */
-public class CapitalCity {
+public class CapitalCity
+{
 
     /**
      * Name of the capital city
@@ -26,7 +27,8 @@ public class CapitalCity {
      * @param country Name of Country
      * @param population Population of Capital City
      */
-    public CapitalCity(String name, String country, int population) {
+    public CapitalCity(String name, String country, int population)
+    {
         this.name = name;
         this.country = country;
         this.population = population;
@@ -57,7 +59,8 @@ public class CapitalCity {
      * ToString for capital city
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "CapitalCity{" +
                 "name='" + name +
                 ", country='" + country +
