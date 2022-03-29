@@ -146,4 +146,65 @@ public class AppIntegrationTest
         assertEquals(city.getDistrict(), "New York");
         assertEquals(city.getPopulation(), 8008278);
     }
+
+    @Test
+    void testCapitalCitiesByPopulation()
+    {
+        CapitalCity city = app.capitalCitiesByPopulation("Continent", "Asia").get(0);
+        assertEquals(city.getName(), "Seoul");
+        assertEquals(city.getPopulation(), 9981619);
+        assertEquals(city.getCountry(), "South Korea");
+    }
+
+    @Test
+    void testWorldCapitalCitiesByPopulation()
+    {
+        CapitalCity city = app.worldCapitalCitiesByPopulation().get(10);
+        assertEquals(city.getName(), "Bangkok");
+        assertEquals(city.getPopulation(), 6320174);
+        assertEquals(city.getCountry(), "Thailand");
+    }
+
+    @Test
+    void testTopNCapitalCitiesByPopulation()
+    {
+        CapitalCity city = app.topNCapitalCitiesByPopulation("Region", "Central America", 10).get(0);
+        assertEquals(city.getName(), "Ciudad de México");
+        assertEquals(city.getPopulation(), 8591309);
+        assertEquals(city.getCountry(), "Mexico");
+    }
+
+    @Test
+    void testTopNWorldCapitalCitiesByPopulation()
+    {
+        CapitalCity city = app.topNWorldCapitalCitiesByPopulation(10).get(7);
+        assertEquals(city.getName(), "Cairo");
+        assertEquals(city.getPopulation(), 6789479);
+        assertEquals(city.getCountry(), "Egypt");
+    }
+
+    @Test
+    void testAreaPopulation()
+    {
+        Population pop = app.areaPopulation("Continent", "South America");
+        assertEquals(pop.getArea(), "South America");
+        assertEquals(pop.getPopulation().toString(), "345780000");
+    }
+
+    @Test
+    void testWorldPopulation()
+    {
+        Population pop = app.worldPopulation();
+        assertEquals(pop.getArea(), "World");
+        assertEquals(pop.getPopulation().toString(), "6078749450");
+    }
+
+    @Test
+    void testLanguagePops()
+    {
+        Population pop = app.languagePops(new String[]{"French"}).get(0);
+        assertEquals(pop.getArea(), "French");
+        assertEquals(pop.getPopulation().toString(), "148556800");
+        assertEquals(pop.getUrbanPercentage(), 2.4439001083374023);
+    }
 }
