@@ -258,4 +258,58 @@ public class AppTest
     {
         app.citiesByPopulation(null,"Frence" );
     }
+
+    /**
+     * Capital cities test for null area type
+     */
+    @Test
+    void capitalCitiesByPopulationTestAreaTypeNull()
+    {
+        app.capitalCitiesByPopulation(null, "Europe");
+    }
+
+    /**
+     * Capital cities test for null area name
+     */
+    @Test
+    void capitalCitiesByPopulationTestAreaNull()
+    {
+        app.capitalCitiesByPopulation("Continent", null);
+    }
+
+    /**
+     * Top N capital cities test for null area type
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaNull()
+    {
+        app.topNCapitalCitiesByPopulation(null, "Europe", 10);
+    }
+
+    /**
+     * Top N capital cities test for null area name
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaNameNull()
+    {
+        app.topNCapitalCitiesByPopulation("Continent", null, 10);
+    }
+
+    /**
+     * Top N capital cities test for area type Banana
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaTypeInvalid()
+    {
+        app.topNCapitalCitiesByPopulation("Banana", "Europe", 10);
+    }
+
+    /**
+     * Top N capital cities test for N 0
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestNZero()
+    {
+        app.topNCountriesByPopulation("Continent", "Europe", 0);
+    }
 }
