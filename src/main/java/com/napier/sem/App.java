@@ -399,8 +399,12 @@ public class App
      * Prints list of capital cities
      * @param cities Capital cities to be printed
      */
-    public void printCapitalCities(ArrayList<CapitalCity> cities)
+    public void printCapitalCities(ArrayList<CapitalCity> cities, String filename)
     {
+        if(filename == null || filename == "")
+        {
+            System.out.println("No filename provided!");
+        }
         if(cities == null)
         {
             System.out.println("No capital cities list has been given");
@@ -425,6 +429,17 @@ public class App
 
             //Output capital cities
             System.out.println(sb);
+            try
+            {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
