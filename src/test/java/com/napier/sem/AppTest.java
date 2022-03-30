@@ -284,10 +284,11 @@ public class AppTest
         app.citiesByPopulation(null,"Frence" );
     }
 
+    /**
+     * Language names misspelled
+     */
     @Test
     void languagePopul() {app.languagePops(new String[]{"Chin", "Enish", "Hdi", "Spanh", "Aric"});}
-
-
 
     /**
      * Area test for null, null
