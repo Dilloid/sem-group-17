@@ -46,7 +46,7 @@ public class AppTest
     @Test
     void cityPrintNull()
     {
-        app.printCities(null);
+        app.printCities(null, "TestFilename.md");
     }
 
     /**
@@ -56,7 +56,27 @@ public class AppTest
     void cityPrintZero()
     {
         ArrayList<City> cities = new ArrayList<City>();
-        app.printCities(cities);
+        app.printCities(cities, "TestFilename.md");
+    }
+
+    /**
+     * City print test for null filename
+     */
+    @Test
+    void cityPrintFilenameNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, null);
+    }
+
+    /**
+     * City print test for empty filname
+     */
+    @Test
+    void cityPrintFilenameEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, "");
     }
 
     /**

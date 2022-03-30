@@ -57,46 +57,45 @@ public class App
 
         // Generate report of the cities in the world by population
         ArrayList<City> worldCities = a.worldCitiesByPopulation();
-        a.printCities(worldCities);
-        a.outputCities(worldCities, "WorldCitiesByPopulation.md");
+        a.printCities(worldCities, "WorldCitiesByPopulation.md");
 
         // Generate report of the cities in Oceania by population
         ArrayList<City> oceanicCities = a.citiesByPopulation("Continent", "Oceania");
-        a.printCities(oceanicCities);
+        a.printCities(oceanicCities, "OceanicCitiesByPopulation.md");
 
         // Generate report of the cities in British Islands by population
         ArrayList<City> britishCities =a.citiesByPopulation("Region", "British Islands");
-        a.printCities(britishCities);
+        a.printCities(britishCities, "BritishCitiesByPopulation.md");
 
         // Generate report of the cities in France by population
         ArrayList<City> franceCities = a.citiesByPopulation("Country", "France");
-        a.printCities(franceCities);
+        a.printCities(franceCities, "FranceCitiesByPopulation.md");
 
         // Generate report of the cities in Scotland by population
         ArrayList<City> scotlandCities = a.citiesByPopulation("District", "Scotland");
-        a.printCities(scotlandCities);
+        a.printCities(scotlandCities, "ScotlandCitiesByPopulation.md");
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous cities in the world
         ArrayList<City> worldTopCities = a.topNWorldCitiesByPopulation(10);
-        a.printCities(worldTopCities);
+        a.printCities(worldTopCities, "TopNWorldCitiesByPopulation.md");
 
         // Generate report of the top 10 most populous cities in Africa
         ArrayList<City> africaTopCities = a.topNCitiesByPopulation("Continent", "Africa", 10);
-        a.printCities(africaTopCities);
+        a.printCities(africaTopCities, "TopNAfricaCitiesByPopulation.md");
 
         // Generate report of the top 10 most populous cities in Western Europe
         ArrayList<City> westEUTopCities = a.topNCitiesByPopulation("Region", "Western Europe", 10);
-        a.printCities(westEUTopCities);
+        a.printCities(westEUTopCities, "TopNWestEUCitiesByPopulation.md");
 
         // Generate report of the top 10 most populous cities in Africa
         ArrayList<City> japanTopCities = a.topNCitiesByPopulation("Country", "Japan", 10);
-        a.printCities(japanTopCities);
+        a.printCities(japanTopCities, "TopNJapanCitiesByPopulation.md");
 
         // Generate report of the top 10 most populous cities in Florida
         ArrayList<City> floridaTopCities = a.topNCitiesByPopulation("District", "Florida", 10);
-        a.printCities(floridaTopCities);
+        a.printCities(floridaTopCities, "TopNFloridaCitiesByPopulation.md");
 
         // ========================================================================================
 
@@ -242,52 +241,21 @@ public class App
         }
     }
 
-    public void outputCities(ArrayList<City> cities, String filename)
-    {
-        if(cities == null)
-        {
-            System.out.println("No cities list has been given");
-        }
-        else if(cities.size() < 1)
-        {
-            System.out.println("No cities to output");
-        }
-        else
-        {
-            StringBuilder sb = new StringBuilder();
-
-            //city info headers
-            sb.append("| City | Country | District | Population |\r\n");
-            sb.append("| --- | --- | --- | --- |\r\n");
-
-            //city info for areas
-            for (City n : cities)
-            {
-                if (n == null) continue;
-                sb.append("| " + n.getName() + " | " + n.getCountry() + " | " + n.getDistrict() + " | " + n.getPopulation() + " |\r\n");
-            }
-            try {
-                new File("./reports/").mkdir();
-                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
-                writer.write(sb.toString());
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     /**
      * Prints list of cities
      * @param cities cities to be printed
      */
-    public void printCities(ArrayList<City> cities)
+    public void printCities(ArrayList<City> cities, String filename)
     {
-        if(cities == null)
+        if (filename == null || filename == "")
+        {
+            System.out.println("No filename provided!");
+        }
+        else if (cities == null)
         {
             System.out.println("No cities list has been given");
         }
-        else if(cities.size() < 1)
+        else if (cities.size() < 1)
         {
             System.out.println("No cities to print");
         }
@@ -307,6 +275,18 @@ public class App
 
             //Output cities
             System.out.println(sb.toString());
+
+            try
+            {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
