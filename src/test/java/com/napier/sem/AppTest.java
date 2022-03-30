@@ -104,16 +104,6 @@ public class AppTest
     void areaPopulationPrintNull() {app.printAreaPopulation(null);}
 
     /**
-     * Area population print test for empty list
-     */
-    @Test
-    void areaPopulationPrintZero()
-    {
-        ArrayList<Population> areas = new ArrayList<Population>();
-        app.printAreaPopulation(areas);
-    }
-
-    /**
      * Populations test for Banana
      */
     @Test
