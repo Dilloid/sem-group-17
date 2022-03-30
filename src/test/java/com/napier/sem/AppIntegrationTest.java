@@ -147,6 +147,9 @@ public class AppIntegrationTest
         assertEquals(city.getPopulation(), 8008278);
     }
 
+    /**
+     * Integration test for capitalCitiesByPopulation
+     */
     @Test
     void testCapitalCitiesByPopulation()
     {
@@ -156,6 +159,9 @@ public class AppIntegrationTest
         assertEquals(city.getCountry(), "South Korea");
     }
 
+    /**
+     * Integration test for worldCapitalCitiesByPopulation
+     */
     @Test
     void testWorldCapitalCitiesByPopulation()
     {
@@ -165,6 +171,9 @@ public class AppIntegrationTest
         assertEquals(city.getCountry(), "Thailand");
     }
 
+    /**
+     * Integration test for topNCapitalCitiesByPopulation
+     */
     @Test
     void testTopNCapitalCitiesByPopulation()
     {
@@ -174,6 +183,9 @@ public class AppIntegrationTest
         assertEquals(city.getCountry(), "Mexico");
     }
 
+    /**
+     * Integration test for topNWorldCapitalCitiesByPopulation
+     */
     @Test
     void testTopNWorldCapitalCitiesByPopulation()
     {
@@ -183,6 +195,9 @@ public class AppIntegrationTest
         assertEquals(city.getCountry(), "Egypt");
     }
 
+    /**
+     * Integration test for areaPopulation
+     */
     @Test
     void testAreaPopulation()
     {
@@ -191,6 +206,9 @@ public class AppIntegrationTest
         assertEquals(pop.getPopulation().toString(), "345780000");
     }
 
+    /**
+     * Integration test for worldPopulation
+     */
     @Test
     void testWorldPopulation()
     {
@@ -199,6 +217,9 @@ public class AppIntegrationTest
         assertEquals(pop.getPopulation().toString(), "6078749450");
     }
 
+    /**
+     * Integration test for languagePops
+     */
     @Test
     void testLanguagePops()
     {
