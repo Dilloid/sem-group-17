@@ -29,29 +29,29 @@ public class App
 
         // Generate report of the countries in the world by population
         ArrayList<Country> worldCountries = a.worldCountriesByPopulation();
-        a.printCountries(worldCountries);
+        a.printCountries(worldCountries, "WorldCountriesByPopulation.md");
 
         // Generate report of the countries in Europe by population
         ArrayList<Country> europeCountries = a.countriesByPopulation("Continent", "Europe");
-        a.printCountries(europeCountries);
+        a.printCountries(europeCountries, "europianCountriesByPopulation.md");
 
         // Generate report of the countries in Eastern Africa by population
         ArrayList<Country> eastAfricaCountries = a.countriesByPopulation("Region", "Eastern Africa");
-        a.printCountries(eastAfricaCountries);
+        a.printCountries(eastAfricaCountries, "africanCountriesByPopulation.md");
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous countries in the world
         ArrayList<Country> worldTopCountries = a.topNWorldCountriesByPopulation(10);
-        a.printCountries(worldTopCountries);
+        a.printCountries(worldTopCountries, "topNWorldCountriesByPopulation.md");
 
         // Generate report of the top 10 most populous countries in North America
         ArrayList<Country> northAmericaTopCountries = a.topNCountriesByPopulation("Continent", "North America", 10);
-        a.printCountries(northAmericaTopCountries);
+        a.printCountries(northAmericaTopCountries, "topNAmericanCountriesByPopulation.md");
 
         // Generate report of the top 10 most populous countries in Southeast Asia
         ArrayList<Country> southEastAsiaTopCountries = a.topNCountriesByPopulation("Region", "Southeast Asia", 10);
-        a.printCountries(southEastAsiaTopCountries);
+        a.printCountries(southEastAsiaTopCountries, "topNAsianCountriesByPopulation.md");
 
         // ========================================================================================
 
@@ -294,8 +294,13 @@ public class App
      * Prints list of countries
      * @param countries countries to be printed
      */
-    public void printCountries(ArrayList<Country> countries)
+    public void printCountries(ArrayList<Country> countries, String filename)
     {
+        if (filename == null || filename == "")
+        {
+            System.out.println("No filename provided!");
+        }
+        else
         if(countries == null)
         {
             System.out.println("No countries list has been given");
@@ -304,8 +309,7 @@ public class App
         {
             System.out.println("No countries to print");
         }
-        else
-        {
+        else {
             StringBuilder sb = new StringBuilder();
 
             //Country info headers
@@ -313,13 +317,21 @@ public class App
             sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
             //country info for areas
-            for (Country c : countries)
-            {
+            for (Country c : countries) {
                 sb.append("| " + c.getCode() + " | " + c.getName() + " | " + c.getContinent() + " | " + c.getRegion() + " | " + c.getPopulation() + " | " + c.getCapitalName() + " |\r\n");
             }
 
             //Output countries
             System.out.println(sb);
+
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -533,6 +545,7 @@ public class App
      */
     public ArrayList<Country> worldCountriesByPopulation()
     {
+
         try
         {
             // Create an SQL statement
