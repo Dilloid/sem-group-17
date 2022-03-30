@@ -104,7 +104,7 @@ public class AppTest
     @Test
     void countryPrintNull()
     {
-        app.printCountries(null);
+        app.printCountries(null, "TestFilename.md");
     }
 
     /**
@@ -114,7 +114,27 @@ public class AppTest
     void countryPrintZero()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printCountries(countries);
+        app.printCountries(countries, "TestFilename.md");
+    }
+
+    /**
+     * Country print test for empty filname
+     */
+    @Test
+    void countryPrintFilenameNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCountries(countries, null);
+    }
+
+    /**
+     * Country print test for empty filname
+     */
+    @Test
+    void countryPrintFilenameEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCountries(countries, "");
     }
 
     /**
