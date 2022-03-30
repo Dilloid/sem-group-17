@@ -27,7 +27,7 @@ public class AppTest
     @Test
     void populationPrintNull()
     {
-        app.printPopulations(null);
+        app.printPopulations(null, "TestFilename");
     }
 
     /**
@@ -37,7 +37,54 @@ public class AppTest
     void populationPrintZero()
     {
         ArrayList<Population> populations = new ArrayList<Population>();
-        app.printPopulations(populations);
+        app.printPopulations(populations, "TestFilename");
+    }
+
+    /**
+     * City print test for null filename
+     */
+    @Test
+    void populationPrintFilenameNull()
+    {
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printPopulations(populations, null);
+    }
+
+    /**
+     * City print test for empty filname
+     */
+    @Test
+    void populationPrintFilenameEmpty()
+    {
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printPopulations(populations, "");
+    }
+
+    /**
+     * Area population print test for null population
+     */
+    @Test
+    void areaPopulationPrintNull()
+    {
+        app.printAreaPopulation(null, "TestFilename.md");
+    }
+
+    /**
+     * Area population print test for null filename
+     */
+    @Test
+    void areaPopulationPrintFilenameNull()
+    {
+        app.printAreaPopulation(null, null);
+    }
+
+    /**
+     * Area population print test for empty filename
+     */
+    @Test
+    void areaPopulationPrintFilenameEmpty()
+    {
+        app.printAreaPopulation(null, "");
     }
 
     /**
@@ -116,12 +163,6 @@ public class AppTest
         ArrayList<Country> countries = new ArrayList<Country>();
         app.printCountries(countries);
     }
-
-    /**
-     * Area population print test for null
-     */
-    @Test
-    void areaPopulationPrintNull() {app.printAreaPopulation(null);}
 
     /**
      * Populations language print test for null

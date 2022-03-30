@@ -129,41 +129,41 @@ public class App
 
         // Generate report of the population of each continent
         ArrayList<Population> continentPops = a.populationRuralUrban("Continent");
-        a.printPopulations(continentPops);
+        a.printPopulations(continentPops, "ContinentPopulations.md");
 
         // Generate report of the population of each region
         ArrayList<Population> regionPops = a.populationRuralUrban("Region");
-        a.printPopulations(regionPops);
+        a.printPopulations(regionPops, "RegionPopulations.md");
 
         // Generate report of the population of each country
         ArrayList<Population> countryPops = a.populationRuralUrban("Country");
-        a.printPopulations(countryPops);
+        a.printPopulations(countryPops, "CountryPopulations.md");
 
         // ========================================================================================
 
         // Generate report of the population of the world
         Population worldPop = a.worldPopulation();
-        a.printAreaPopulation(worldPop);
+        a.printAreaPopulation(worldPop, "WorldPopulation.md");
 
         // Generate report of the population of South america
         Population southAmericaPop = a.areaPopulation("Continent", "South America");
-        a.printAreaPopulation(southAmericaPop);
+        a.printAreaPopulation(southAmericaPop, "SouthAmericaPopulation.md");
 
         // Generate report of the population of South america
         Population eastAfricaPop = a.areaPopulation("Region", "Eastern Africa");
-        a.printAreaPopulation(eastAfricaPop);
+        a.printAreaPopulation(eastAfricaPop, "EastAfricaPopulation.md");
 
         // Generate report of the population of South america
         Population jamaicaPop = a.areaPopulation("Country", "Jamaica");
-        a.printAreaPopulation(jamaicaPop);
+        a.printAreaPopulation(jamaicaPop, "JamaicaPopulation.md");
 
         // Generate report of the population of South america
         Population walesPop = a.areaPopulation("District", "Wales");
-        a.printAreaPopulation(walesPop);
+        a.printAreaPopulation(walesPop, "WalesPopulation.md");
 
         // Generate report of the population of South america
         Population edinburghPop = a.areaPopulation("City", "Edinburgh");
-        a.printAreaPopulation(edinburghPop);
+        a.printAreaPopulation(edinburghPop, "EdinburghPopulation.md");
 
         // ========================================================================================
 
@@ -327,9 +327,13 @@ public class App
      * Prints list of populations
      * @param populations populations to be printed
      */
-    public void printPopulations(ArrayList<Population> populations)
+    public void printPopulations(ArrayList<Population> populations, String filename)
     {
-        if(populations == null)
+        if (filename == null || filename == "")
+        {
+            System.out.println("No filename provided!");
+        }
+        else if(populations == null)
         {
             System.out.println("No populations list has been given");
         }
@@ -345,7 +349,6 @@ public class App
             sb.append("| Location | Population | Urban Population | Percentage | Rural Population | Percentage |\r\n");
             sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
-
             //population info for areas
             for (Population n : populations)
             {
@@ -354,6 +357,18 @@ public class App
 
             //Output populations
             System.out.println(sb);
+
+            try
+            {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -394,9 +409,13 @@ public class App
      * Prints population info of an area
      * @param pop Population to be printed
      */
-    public void printAreaPopulation(Population pop)
+    public void printAreaPopulation(Population pop, String filename)
     {
-        if(pop == null)
+        if (filename == null || filename == "")
+        {
+            System.out.println("No filename provided!");
+        }
+        else if(pop == null)
         {
             System.out.println("No population has been given");
         }
@@ -413,6 +432,18 @@ public class App
 
             //Output population
             System.out.println(sb);
+
+            try
+            {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -959,8 +990,6 @@ public class App
         }
         else
         {
-
-
             //String used for the area type in SQL Statement
             String areaTyped;
 
