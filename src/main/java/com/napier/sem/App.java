@@ -29,101 +29,101 @@ public class App
 
         // Generate report of the countries in the world by population
         ArrayList<Country> worldCountries = a.worldCountriesByPopulation();
-        a.printCountries(worldCountries, "WorldCountriesByPopulation.md");
+        a.printCountries(worldCountries, "01_World_Countries_By_Population.md");
 
         // Generate report of the countries in Europe by population
         ArrayList<Country> europeCountries = a.countriesByPopulation("Continent", "Europe");
-        a.printCountries(europeCountries, "europianCountriesByPopulation.md");
+        a.printCountries(europeCountries, "02_European_Countries_By_Population.md");
 
         // Generate report of the countries in Eastern Africa by population
         ArrayList<Country> eastAfricaCountries = a.countriesByPopulation("Region", "Eastern Africa");
-        a.printCountries(eastAfricaCountries, "africanCountriesByPopulation.md");
+        a.printCountries(eastAfricaCountries, "03_African_Countries_By_Population.md");
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous countries in the world
         ArrayList<Country> worldTopCountries = a.topNWorldCountriesByPopulation(10);
-        a.printCountries(worldTopCountries, "topNWorldCountriesByPopulation.md");
+        a.printCountries(worldTopCountries, "04_Top_N_World_Countries_By_Population.md");
 
         // Generate report of the top 10 most populous countries in North America
         ArrayList<Country> northAmericaTopCountries = a.topNCountriesByPopulation("Continent", "North America", 10);
-        a.printCountries(northAmericaTopCountries, "topNAmericanCountriesByPopulation.md");
+        a.printCountries(northAmericaTopCountries, "05_Top_N_American_Countries_By_Population.md");
 
         // Generate report of the top 10 most populous countries in Southeast Asia
         ArrayList<Country> southEastAsiaTopCountries = a.topNCountriesByPopulation("Region", "Southeast Asia", 10);
-        a.printCountries(southEastAsiaTopCountries, "topNAsianCountriesByPopulation.md");
+        a.printCountries(southEastAsiaTopCountries, "06_Top_N_Asian_Countries_By_Population.md");
 
         // ========================================================================================
 
         // Generate report of the cities in the world by population
         ArrayList<City> worldCities = a.worldCitiesByPopulation();
-        a.printCities(worldCities, "01_World_Cities_By_Population.md");
+        a.printCities(worldCities, "07_World_Cities_By_Population.md");
 
         // Generate report of the cities in Oceania by population
         ArrayList<City> oceanicCities = a.citiesByPopulation("Continent", "Oceania");
-        a.printCities(oceanicCities, "02_Oceanic_Cities_By_Population.md");
+        a.printCities(oceanicCities, "08_Oceanic_Cities_By_Population.md");
 
         // Generate report of the cities in British Islands by population
         ArrayList<City> britishCities =a.citiesByPopulation("Region", "British Islands");
-        a.printCities(britishCities, "03_British_Cities_By_Population.md");
+        a.printCities(britishCities, "09_British_Cities_By_Population.md");
 
         // Generate report of the cities in France by population
         ArrayList<City> franceCities = a.citiesByPopulation("Country", "France");
-        a.printCities(franceCities, "04_France_Cities_By_Population.md");
+        a.printCities(franceCities, "10_France_Cities_By_Population.md");
 
         // Generate report of the cities in Scotland by population
         ArrayList<City> scotlandCities = a.citiesByPopulation("District", "Scotland");
-        a.printCities(scotlandCities, "05_Scotland_Cities_By_Population.md");
+        a.printCities(scotlandCities, "11_Scotland_Cities_By_Population.md");
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous cities in the world
         ArrayList<City> worldTopCities = a.topNWorldCitiesByPopulation(10);
-        a.printCities(worldTopCities, "06_Top_N_World_Cities_By_Population.md");
+        a.printCities(worldTopCities, "12_Top_N_World_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Africa
         ArrayList<City> africaTopCities = a.topNCitiesByPopulation("Continent", "Africa", 10);
-        a.printCities(africaTopCities, "07_Top_N_Africa_Cities_By_Population.md");
+        a.printCities(africaTopCities, "13_Top_N_Africa_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Western Europe
         ArrayList<City> westEUTopCities = a.topNCitiesByPopulation("Region", "Western Europe", 10);
-        a.printCities(westEUTopCities, "08_Top_N_West_EU_Cities_By_Population.md");
+        a.printCities(westEUTopCities, "14_Top_N_West_EU_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Africa
         ArrayList<City> japanTopCities = a.topNCitiesByPopulation("Country", "Japan", 10);
-        a.printCities(japanTopCities, "09_Top_N_Japan_Cities_By_Population.md");
+        a.printCities(japanTopCities, "15_Top_N_Japan_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Florida
         ArrayList<City> floridaTopCities = a.topNCitiesByPopulation("District", "Florida", 10);
-        a.printCities(floridaTopCities, "10_Top_N_Florida_Cities_By_Population.md");
+        a.printCities(floridaTopCities, "16_Top_N_Florida_Cities_By_Population.md");
 
         // ========================================================================================
 
         // Generate report of the capital cities in the world by population
         ArrayList<CapitalCity> worldCapitals = a.worldCapitalCitiesByPopulation();
-        a.printCapitalCities(worldCapitals);
+        a.printCapitalCities(worldCapitals, "17_World_Capital_Cities_By_Population");
 
         // Generate report of the capital cities in Europe by population
         ArrayList<CapitalCity> europeanCapitals = a.capitalCitiesByPopulation("Continent", "Europe");
-        a.printCapitalCities(europeanCapitals);
+        a.printCapitalCities(europeanCapitals, "18_European_Capital_Cities_By_Population");
 
         // Generate report of the capital cities in the Middle East by population
         ArrayList<CapitalCity> middleEasternCapitals = a.capitalCitiesByPopulation("Region", "Middle East");
-        a.printCapitalCities(middleEasternCapitals);
+        a.printCapitalCities(middleEasternCapitals, "19_Middle-Eastern_Capital_Cities_By_Population");
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous capital cities in the world
         ArrayList<CapitalCity> worldTopCapitals = a.topNWorldCapitalCitiesByPopulation(10);
-        a.printCapitalCities(worldTopCapitals);
+        a.printCapitalCities(worldTopCapitals, "20_Top_N_World_Capital_Cities_By_Population");
 
         // Generate report of the top 10 most populous capital cities in Asia
         ArrayList<CapitalCity> asiaTopCapitals = a.topNCapitalCitiesByPopulation("Continent", "Asia", 10);
-        a.printCapitalCities(asiaTopCapitals);
+        a.printCapitalCities(asiaTopCapitals, "21_Top_N_Asian_Capital_Cities_By_Population");
 
         // Generate report of the top 10 most populous capital cities in Central America
         ArrayList<CapitalCity> centralAmericaTopCapitals = a.topNCapitalCitiesByPopulation("Region", "Central America", 10);
-        a.printCapitalCities(centralAmericaTopCapitals);
+        a.printCapitalCities(centralAmericaTopCapitals, "22_Top_N_Central-American_Capital_Cities_By_Population");
 
         // ========================================================================================
 
@@ -251,7 +251,7 @@ public class App
         int check = 0;
         for(char n : name.toCharArray())
         {
-            if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_ 1234567890".indexOf(n) != -1)
+            if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_ 1234567890.".indexOf(n) != -1)
             {
                 check++;
             }
@@ -276,6 +276,10 @@ public class App
         if (filename == null || filename == "")
         {
             System.out.println("No filename provided!");
+        }
+        else if(!fileNameValid(filename))
+        {
+            System.out.println("Filename invalid!");
         }
         else if (cities == null)
         {
@@ -326,8 +330,11 @@ public class App
         {
             System.out.println("No filename provided!");
         }
-        else
-        if(countries == null)
+        else if(!fileNameValid(filename))
+        {
+            System.out.println("Filename invalid!");
+        }
+        else if(countries == null)
         {
             System.out.println("No countries list has been given");
         }
@@ -405,7 +412,11 @@ public class App
         {
             System.out.println("No filename provided!");
         }
-        if(cities == null)
+        else if(!fileNameValid(filename))
+        {
+            System.out.println("Filename invalid!");
+        }
+        else if(cities == null)
         {
             System.out.println("No capital cities list has been given");
         }
@@ -479,7 +490,7 @@ public class App
         {
             System.out.println("No filename provided!");
         }
-        else if(fileNameValid(filename) == false)
+        else if(!fileNameValid(filename))
         {
             System.out.println("Filename invalid!");
         }
@@ -1505,7 +1516,7 @@ public class App
      */
     public ArrayList<Population> languagePops(String[] langs)
     {
-if(langs.length < 1)
+        if(langs.length < 1)
         {
             return null;
         }
