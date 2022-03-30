@@ -1,5 +1,8 @@
 name: A workflow for sem-group-17 coursework
-on: push
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
   UnitTests:

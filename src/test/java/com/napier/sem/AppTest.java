@@ -46,7 +46,7 @@ public class AppTest
     @Test
     void cityPrintNull()
     {
-        app.printCities(null);
+        app.printCities(null, "TestFilename.md");
     }
 
     /**
@@ -56,7 +56,27 @@ public class AppTest
     void cityPrintZero()
     {
         ArrayList<City> cities = new ArrayList<City>();
-        app.printCities(cities);
+        app.printCities(cities, "TestFilename.md");
+    }
+
+    /**
+     * City print test for null filename
+     */
+    @Test
+    void cityPrintFilenameNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, null);
+    }
+
+    /**
+     * City print test for empty filname
+     */
+    @Test
+    void cityPrintFilenameEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, "");
     }
 
     /**
@@ -282,6 +302,61 @@ public class AppTest
     void citiesByPopulationTestAreaMisspell()
     {
         app.citiesByPopulation(null,"Frence" );
+    }
+
+
+    /**
+     * Capital cities test for null area type
+     */
+    @Test
+    void capitalCitiesByPopulationTestAreaTypeNull()
+    {
+        app.capitalCitiesByPopulation(null, "Europe");
+    }
+
+    /**
+     * Capital cities test for null area name
+     */
+    @Test
+    void capitalCitiesByPopulationTestAreaNull()
+    {
+        app.capitalCitiesByPopulation("Continent", null);
+    }
+
+    /**
+     * Top N capital cities test for null area type
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaNull()
+    {
+        app.topNCapitalCitiesByPopulation(null, "Europe", 10);
+    }
+
+    /**
+     * Top N capital cities test for null area name
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaNameNull()
+    {
+        app.topNCapitalCitiesByPopulation("Continent", null, 10);
+    }
+
+    /**
+     * Top N capital cities test for area type Banana
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaTypeInvalid()
+    {
+        app.topNCapitalCitiesByPopulation("Banana", "Europe", 10);
+    }
+
+    /**
+     * Top N capital cities test for N 0
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestNZero()
+    {
+        app.topNCountriesByPopulation("Continent", "Europe", 0);
     }
 
     /**

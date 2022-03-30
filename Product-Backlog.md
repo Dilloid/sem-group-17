@@ -3,6 +3,12 @@
 In progress:
 
 To do:
+
+Completed:
+- Create main class
+- Build application with Docker
+- Configure project to generate .jar file
+- Configure GitHub Actionsq to test each build automatically
 - Interface with SQL database
 - Reports on the following:
   - All the countries in the world organised by largest population to smallest.
@@ -42,9 +48,3 @@ To do:
   - Hindi.
   - Spanish.
   - Arabic.
-
-Completed:
-- Create main class
-- Build application with Docker
-- Configure project to generate .jar file
-- Configure GitHub Actionsq to test each build automatically
