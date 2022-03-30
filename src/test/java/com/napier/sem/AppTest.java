@@ -98,6 +98,25 @@ public class AppTest
     }
 
     /**
+     * Populations language print test for null
+     */
+    @Test
+    void populationLangPrintNull()
+    {
+        app.printLanguagePopulations(null);
+    }
+
+    /**
+     * Populations language print test for empty list
+     */
+    @Test
+    void populationLangPrintZero()
+    {
+        ArrayList<Population> langPopulations = new ArrayList<Population>();
+        app.printLanguagePopulations(langPopulations);
+    }
+
+    /**
      * Populations test for Banana
      */
     @Test
@@ -262,19 +281,5 @@ public class AppTest
     @Test
     void languagePopul() {app.languagePops(new String[]{"Chin", "Enish", "Hdi", "Spanh", "Aric"});}
 
-    @Test
-    void populationLangPrintNull()
-    {
-        app.printLanguagePopulations(null);
-    }
 
-    /**
-     * Populations print test for empty list
-     */
-    @Test
-    void populationLangPrintZero()
-    {
-        ArrayList<Population> langPopulations = new ArrayList<Population>();
-        app.printLanguagePopulations(langPopulations);
-    }
 }
