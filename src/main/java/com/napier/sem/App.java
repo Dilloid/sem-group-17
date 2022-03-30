@@ -377,7 +377,7 @@ public class App
      * Prints population info of an area
      * @param pop Population to be printed
      */
-    public void printAreaPopulation(Population pop)
+    public void printAreaPopulation(ArrayList<Population> pop)
     {
         if(pop == null)
         {
