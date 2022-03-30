@@ -80,12 +80,32 @@ public class AppTest
     }
 
     /**
+     * Capital City print test for null filename
+     */
+    @Test
+    void capitalCityPrintFilenameNull()
+    {
+        ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
+        app.printCapitalCities(cities, null);
+    }
+
+    /**
+     * Capital City print test for empty filename
+     */
+    @Test
+    void capitalCityPrintFilenameEmpty()
+    {
+        ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
+        app.printCapitalCities(cities, "");
+    }
+
+    /**
      * Capital print test for null
      */
     @Test
     void capitalCityPrintNull()
     {
-        app.printCapitalCities(null);
+        app.printCapitalCities(null, "TestFilename.md");
     }
 
     /**
@@ -95,7 +115,7 @@ public class AppTest
     void capitalCityPrintZero()
     {
         ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
-        app.printCapitalCities(cities);
+        app.printCapitalCities(cities, "TestFilename.md");
     }
 
     /**
