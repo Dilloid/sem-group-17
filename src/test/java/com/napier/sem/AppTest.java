@@ -98,6 +98,22 @@ public class AppTest
     }
 
     /**
+     * Area population print test for null
+     */
+    @Test
+    void areaPopulationPrintNull() {app.printAreaPopulation(null);}
+
+    /**
+     * Area population print test for empty list
+     */
+    @Test
+    void areaPopulationPrintZero()
+    {
+        ArrayList<Population> areas = new ArrayList<Population>();
+        app.printAreaPopulation(areas);
+    }
+
+    /**
      * Populations test for Banana
      */
     @Test
@@ -257,5 +273,41 @@ public class AppTest
     void citiesByPopulationTestAreaMisspell()
     {
         app.citiesByPopulation(null,"Frence" );
+    }
+
+    /**
+     * Area test for null, null
+     */
+    @Test
+    void areasByPopulationTest()
+    {
+        app.areaPopulation(null, null);
+    }
+
+    /**
+     * Area test for null areaType
+     */
+    @Test
+    void areasByPopulationTestAreaTypeNull()
+    {
+        app.areaPopulation(null, "Europe");
+    }
+
+    /**
+     * Area test for null area name
+     */
+    @Test
+    void areasByPopulationTestAreaNameNull()
+    {
+        app.areaPopulation("Continent", null);
+    }
+
+    /**
+     * Area test for invalid area type
+     */
+    @Test
+    void areasByPopulationTestAreaNameInvalid()
+    {
+        app.areaPopulation("Banana", "Europe");
     }
 }
