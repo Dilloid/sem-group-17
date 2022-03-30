@@ -3,6 +3,7 @@ package com.napier.sem;
 import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
+import java.io.*;
 
 /**
  * Where all the magic happens
@@ -57,6 +58,7 @@ public class App
         // Generate report of the cities in the world by population
         ArrayList<City> worldCities = a.worldCitiesByPopulation();
         a.printCities(worldCities);
+        a.outputCities(worldCities, "WorldCitiesByPopulation");
 
         // Generate report of the cities in Oceania by population
         ArrayList<City> oceanicCities = a.citiesByPopulation("Continent", "Oceania");
@@ -236,6 +238,41 @@ public class App
             catch (Exception e)
             {
                 System.out.println("Error closing connection to database");
+            }
+        }
+    }
+
+    public void outputCities(ArrayList<City> cities, String filename)
+    {
+        if(cities == null)
+        {
+            System.out.println("No cities list has been given");
+        }
+        else if(cities.size() < 1)
+        {
+            System.out.println("No cities to output");
+        }
+        else
+        {
+            StringBuilder sb = new StringBuilder();
+
+            //city info headers
+            sb.append("| City | Country | District | Population |\r\n");
+            sb.append("| --- | --- | --- | --- |\r\n");
+
+            //city info for areas
+            for (City n : cities)
+            {
+                if (n == null) continue;
+                sb.append("| " + n.getName() + " | " + n.getCountry() + " | " + n.getDistrict() + " | " + n.getPopulation() + " |\r\n");
+            }
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
