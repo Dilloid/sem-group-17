@@ -57,45 +57,45 @@ public class App
 
         // Generate report of the cities in the world by population
         ArrayList<City> worldCities = a.worldCitiesByPopulation();
-        a.printCities(worldCities, "WorldCitiesByPopulation.md");
+        a.printCities(worldCities, "01_World_Cities_By_Population.md");
 
         // Generate report of the cities in Oceania by population
         ArrayList<City> oceanicCities = a.citiesByPopulation("Continent", "Oceania");
-        a.printCities(oceanicCities, "OceanicCitiesByPopulation.md");
+        a.printCities(oceanicCities, "02_Oceanic_Cities_By_Population.md");
 
         // Generate report of the cities in British Islands by population
         ArrayList<City> britishCities =a.citiesByPopulation("Region", "British Islands");
-        a.printCities(britishCities, "BritishCitiesByPopulation.md");
+        a.printCities(britishCities, "03_British_Cities_By_Population.md");
 
         // Generate report of the cities in France by population
         ArrayList<City> franceCities = a.citiesByPopulation("Country", "France");
-        a.printCities(franceCities, "FranceCitiesByPopulation.md");
+        a.printCities(franceCities, "04_France_Cities_By_Population.md");
 
         // Generate report of the cities in Scotland by population
         ArrayList<City> scotlandCities = a.citiesByPopulation("District", "Scotland");
-        a.printCities(scotlandCities, "ScotlandCitiesByPopulation.md");
+        a.printCities(scotlandCities, "05_Scotland_Cities_By_Population.md");
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous cities in the world
         ArrayList<City> worldTopCities = a.topNWorldCitiesByPopulation(10);
-        a.printCities(worldTopCities, "TopNWorldCitiesByPopulation.md");
+        a.printCities(worldTopCities, "06_Top_N_World_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Africa
         ArrayList<City> africaTopCities = a.topNCitiesByPopulation("Continent", "Africa", 10);
-        a.printCities(africaTopCities, "TopNAfricaCitiesByPopulation.md");
+        a.printCities(africaTopCities, "07_Top_N_Africa_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Western Europe
         ArrayList<City> westEUTopCities = a.topNCitiesByPopulation("Region", "Western Europe", 10);
-        a.printCities(westEUTopCities, "TopNWestEUCitiesByPopulation.md");
+        a.printCities(westEUTopCities, "08_Top_N_West_EU_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Africa
         ArrayList<City> japanTopCities = a.topNCitiesByPopulation("Country", "Japan", 10);
-        a.printCities(japanTopCities, "TopNJapanCitiesByPopulation.md");
+        a.printCities(japanTopCities, "09_Top_N_Japan_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous cities in Florida
         ArrayList<City> floridaTopCities = a.topNCitiesByPopulation("District", "Florida", 10);
-        a.printCities(floridaTopCities, "TopNFloridaCitiesByPopulation.md");
+        a.printCities(floridaTopCities, "10_Top_N_Florida_Cities_By_Population.md");
 
         // ========================================================================================
 
@@ -168,7 +168,7 @@ public class App
         // ========================================================================================
 
         ArrayList<Population> languagePops = a.languagePops(new String[]{"Chinese", "English", "Hindi", "Spanish", "Arabic"});
-        a.printLanguagePopulations(languagePops);
+        a.printLanguagePopulations(languagePops, "32_Populations_of_5_languages.md");
 
         // ========================================================================================
 
@@ -238,6 +238,32 @@ public class App
             {
                 System.out.println("Error closing connection to database");
             }
+        }
+    }
+
+    /**
+     * Check if name is valid for files
+     * @param name proposed file name
+     * @return boolean
+     */
+    private boolean fileNameValid(String name)
+    {
+        int check = 0;
+        for(char n : name.toCharArray())
+        {
+            if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_ 1234567890".indexOf(n) != -1)
+            {
+                check++;
+            }
+        }
+
+        if(check == name.length())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -420,9 +446,17 @@ public class App
      * Prints populations of languages
      * @param pops Populations to be printed
      */
-    public void printLanguagePopulations(ArrayList<Population> pops)
+    public void printLanguagePopulations(ArrayList<Population> pops, String filename)
     {
-        if(pops == null)
+        if (filename == null || filename == "")
+        {
+            System.out.println("No filename provided!");
+        }
+        else if(fileNameValid(filename) == false)
+        {
+            System.out.println("Filename invalid!");
+        }
+        else if(pops == null)
         {
             System.out.println("No populations list has been given");
         }
@@ -446,6 +480,18 @@ public class App
 
             //Output populations
             System.out.println(sb);
+
+            try
+            {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 

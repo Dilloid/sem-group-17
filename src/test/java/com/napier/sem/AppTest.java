@@ -129,7 +129,7 @@ public class AppTest
     @Test
     void populationLangPrintNull()
     {
-        app.printLanguagePopulations(null);
+        app.printLanguagePopulations(null,"Banana");
     }
 
     /**
@@ -139,7 +139,27 @@ public class AppTest
     void populationLangPrintZero()
     {
         ArrayList<Population> langPopulations = new ArrayList<Population>();
-        app.printLanguagePopulations(langPopulations);
+        app.printLanguagePopulations(langPopulations, "Banana");
+    }
+
+    /**
+     * Populations language print test for filename null
+     */
+    @Test
+    void populationLangPrintNameNull()
+    {
+        ArrayList<Population> langPopulations = new ArrayList<Population>();
+        app.printLanguagePopulations(langPopulations, null);
+    }
+
+    /**
+     * Populations language print test for invalid file name
+     */
+    @Test
+    void populationLangPrintNameInvalid()
+    {
+        ArrayList<Population> langPopulations = new ArrayList<Population>();
+        app.printLanguagePopulations(langPopulations, "!");
     }
 
     /**
