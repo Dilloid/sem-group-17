@@ -58,7 +58,7 @@ public class App
         // Generate report of the cities in the world by population
         ArrayList<City> worldCities = a.worldCitiesByPopulation();
         a.printCities(worldCities);
-        a.outputCities(worldCities, "WorldCitiesByPopulation");
+        a.outputCities(worldCities, "WorldCitiesByPopulation.md");
 
         // Generate report of the cities in Oceania by population
         ArrayList<City> oceanicCities = a.citiesByPopulation("Continent", "Oceania");

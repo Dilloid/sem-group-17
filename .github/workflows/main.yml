@@ -23,6 +23,7 @@ jobs:
           directory: ./target/site/jacoco
           flags: Unit Tests
           verbose: true
+
   IntegrationTests:
     name: Integration Tests
     runs-on: ubuntu-20.04
