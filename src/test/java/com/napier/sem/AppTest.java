@@ -258,4 +258,23 @@ public class AppTest
     {
         app.citiesByPopulation(null,"Frence" );
     }
+
+    @Test
+    void languagePopul() {app.languagePops(new String[]{"Chin", "Enish", "Hdi", "Spanh", "Aric"});}
+
+    @Test
+    void populationLangPrintNull()
+    {
+        app.printLanguagePopulations(null);
+    }
+
+    /**
+     * Populations print test for empty list
+     */
+    @Test
+    void populationLangPrintZero()
+    {
+        ArrayList<Population> langPopulations = new ArrayList<Population>();
+        app.printLanguagePopulations(langPopulations);
+    }
 }
