@@ -119,51 +119,51 @@ public class App
 
         // Generate report of the top 10 most populous capital cities in Asia
         ArrayList<CapitalCity> asiaTopCapitals = a.topNCapitalCitiesByPopulation("Continent", "Asia", 10);
-        a.printCapitalCities(asiaTopCapitals, "21_Top_N_Asian_Capital_Cities_By_Population");
+        a.printCapitalCities(asiaTopCapitals, "21_Top_N_Asia_Capital_Cities_By_Population");
 
         // Generate report of the top 10 most populous capital cities in Central America
         ArrayList<CapitalCity> centralAmericaTopCapitals = a.topNCapitalCitiesByPopulation("Region", "Central America", 10);
-        a.printCapitalCities(centralAmericaTopCapitals, "22_Top_N_Central-American_Capital_Cities_By_Population");
+        a.printCapitalCities(centralAmericaTopCapitals, "22_Top_N_Central-America_Capital_Cities_By_Population");
 
         // ========================================================================================
 
         // Generate report of the population of each continent
         ArrayList<Population> continentPops = a.populationRuralUrban("Continent");
-        a.printPopulations(continentPops, "ContinentPopulations.md");
+        a.printPopulations(continentPops, "23_Continent_Populations.md");
 
         // Generate report of the population of each region
         ArrayList<Population> regionPops = a.populationRuralUrban("Region");
-        a.printPopulations(regionPops, "RegionPopulations.md");
+        a.printPopulations(regionPops, "24_Region_Populations.md");
 
         // Generate report of the population of each country
         ArrayList<Population> countryPops = a.populationRuralUrban("Country");
-        a.printPopulations(countryPops, "CountryPopulations.md");
+        a.printPopulations(countryPops, "25_Country_Populations.md");
 
         // ========================================================================================
 
         // Generate report of the population of the world
         Population worldPop = a.worldPopulation();
-        a.printAreaPopulation(worldPop, "WorldPopulation.md");
+        a.printAreaPopulation(worldPop, "26_World_Population.md");
 
         // Generate report of the population of South america
         Population southAmericaPop = a.areaPopulation("Continent", "South America");
-        a.printAreaPopulation(southAmericaPop, "SouthAmericaPopulation.md");
+        a.printAreaPopulation(southAmericaPop, "27_South-America_Population.md");
 
         // Generate report of the population of South america
         Population eastAfricaPop = a.areaPopulation("Region", "Eastern Africa");
-        a.printAreaPopulation(eastAfricaPop, "EastAfricaPopulation.md");
+        a.printAreaPopulation(eastAfricaPop, "28_East-Africa_Population.md");
 
         // Generate report of the population of South america
         Population jamaicaPop = a.areaPopulation("Country", "Jamaica");
-        a.printAreaPopulation(jamaicaPop, "JamaicaPopulation.md");
+        a.printAreaPopulation(jamaicaPop, "29_Jamaica_Population.md");
 
         // Generate report of the population of South america
         Population walesPop = a.areaPopulation("District", "Wales");
-        a.printAreaPopulation(walesPop, "WalesPopulation.md");
+        a.printAreaPopulation(walesPop, "30_Wales_Population.md");
 
         // Generate report of the population of South america
         Population edinburghPop = a.areaPopulation("City", "Edinburgh");
-        a.printAreaPopulation(edinburghPop, "EdinburghPopulation.md");
+        a.printAreaPopulation(edinburghPop, "31_Edinburgh_Population.md");
 
         // ========================================================================================
 
@@ -342,7 +342,8 @@ public class App
         {
             System.out.println("No countries to print");
         }
-        else {
+        else
+        {
             StringBuilder sb = new StringBuilder();
 
             //Country info headers
@@ -350,19 +351,23 @@ public class App
             sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
 
             //country info for areas
-            for (Country c : countries) {
+            for (Country c : countries)
+            {
                 sb.append("| " + c.getCode() + " | " + c.getName() + " | " + c.getContinent() + " | " + c.getRegion() + " | " + c.getPopulation() + " | " + c.getCapitalName() + " |\r\n");
             }
 
             //Output countries
             System.out.println(sb);
 
-            try {
+            try
+            {
                 new File("./reports/").mkdir();
                 BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
                 writer.write(sb.toString());
                 writer.close();
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
             }
         }
@@ -648,7 +653,6 @@ public class App
      */
     public ArrayList<Country> worldCountriesByPopulation()
     {
-
         try
         {
             // Create an SQL statement
@@ -831,7 +835,8 @@ public class App
                 }
 
                 return countryList;
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 System.out.println(e.getMessage());
                 System.out.println("Failed to generate report.");
@@ -993,7 +998,6 @@ public class App
                 }
 
                 return cities;
-
             }
             catch (Exception e)
             {
@@ -1230,7 +1234,6 @@ public class App
                 }
 
                 return cities;
-
             }
             catch (Exception e)
             {
@@ -1271,7 +1274,6 @@ public class App
             }
 
             return cities;
-
         }
         catch (Exception e)
         {
@@ -1342,7 +1344,6 @@ public class App
                 }
 
                 return cities;
-
             }
             catch (Exception e)
             {
@@ -1393,7 +1394,6 @@ public class App
                 }
 
                 return cities;
-
             }
             catch (Exception e)
             {
@@ -1492,7 +1492,6 @@ public class App
                 }
 
                 return pops.get(0);
-
             }
             catch (Exception e)
             {
@@ -1528,7 +1527,6 @@ public class App
             }
 
             return pops.get(0);
-
         }
         catch (Exception e)
         {
