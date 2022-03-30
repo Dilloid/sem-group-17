@@ -363,6 +363,10 @@ public class App
      */
     public void printCapitalCities(ArrayList<CapitalCity> cities, String filename)
     {
+        if(filename == null || filename == "")
+        {
+            System.out.println("No filename provided!");
+        }
         if(cities == null)
         {
             System.out.println("No capital cities list has been given");
