@@ -101,29 +101,29 @@ public class App
 
         // Generate report of the capital cities in the world by population
         ArrayList<CapitalCity> worldCapitals = a.worldCapitalCitiesByPopulation();
-        a.printCapitalCities(worldCapitals, "17_World_Capital_Cities_By_Population");
+        a.printCapitalCities(worldCapitals, "17_World_Capital_Cities_By_Population.md");
 
         // Generate report of the capital cities in Europe by population
         ArrayList<CapitalCity> europeanCapitals = a.capitalCitiesByPopulation("Continent", "Europe");
-        a.printCapitalCities(europeanCapitals, "18_European_Capital_Cities_By_Population");
+        a.printCapitalCities(europeanCapitals, "18_European_Capital_Cities_By_Population.md");
 
         // Generate report of the capital cities in the Middle East by population
         ArrayList<CapitalCity> middleEasternCapitals = a.capitalCitiesByPopulation("Region", "Middle East");
-        a.printCapitalCities(middleEasternCapitals, "19_Middle-Eastern_Capital_Cities_By_Population");
+        a.printCapitalCities(middleEasternCapitals, "19_Middle-Eastern_Capital_Cities_By_Population.md");
 
         // ========================================================================================
 
         // Generate report of the top 10 most populous capital cities in the world
         ArrayList<CapitalCity> worldTopCapitals = a.topNWorldCapitalCitiesByPopulation(10);
-        a.printCapitalCities(worldTopCapitals, "20_Top_N_World_Capital_Cities_By_Population");
+        a.printCapitalCities(worldTopCapitals, "20_Top_N_World_Capital_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous capital cities in Asia
         ArrayList<CapitalCity> asiaTopCapitals = a.topNCapitalCitiesByPopulation("Continent", "Asia", 10);
-        a.printCapitalCities(asiaTopCapitals, "21_Top_N_Asia_Capital_Cities_By_Population");
+        a.printCapitalCities(asiaTopCapitals, "21_Top_N_Asia_Capital_Cities_By_Population.md");
 
         // Generate report of the top 10 most populous capital cities in Central America
         ArrayList<CapitalCity> centralAmericaTopCapitals = a.topNCapitalCitiesByPopulation("Region", "Central America", 10);
-        a.printCapitalCities(centralAmericaTopCapitals, "22_Top_N_Central-America_Capital_Cities_By_Population");
+        a.printCapitalCities(centralAmericaTopCapitals, "22_Top_N_Central-America_Capital_Cities_By_Population.md");
 
         // ========================================================================================
 
