@@ -1,5 +1,8 @@
 name: A workflow for sem-group-17 coursework
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   UnitTests:
@@ -17,6 +20,12 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.sem.AppTest test
+      - name: CodeCov
+        uses: codecov/codecov-action@v2
+        with:
+          directory: ./target/site/jacoco
+          flags: Unit Tests
+          verbose: true
 
   IntegrationTests:
     name: Integration Tests
@@ -63,3 +72,17 @@ jobs:
         run: |
           mvn package -DskipTests
           docker-compose up --abort-on-container-exit
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          automatic_release_tag: "latest"
+          files: |
+            ./target/*.jar
+      - name: Copy Output
+        run: docker container cp sem-group-17_app_1:./tmp/reports ./
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          branch: reports # The branch the action should deploy to.
+          folder: reports # The folder we are copying

@@ -2,11 +2,8 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Fun unit tests
@@ -27,7 +24,7 @@ public class AppTest
     @Test
     void populationPrintNull()
     {
-        app.printPopulations(null);
+        app.printPopulations(null, "TestFilename");
     }
 
     /**
@@ -37,7 +34,54 @@ public class AppTest
     void populationPrintZero()
     {
         ArrayList<Population> populations = new ArrayList<Population>();
-        app.printPopulations(populations);
+        app.printPopulations(populations, "TestFilename");
+    }
+
+    /**
+     * City print test for null filename
+     */
+    @Test
+    void populationPrintFilenameNull()
+    {
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printPopulations(populations, null);
+    }
+
+    /**
+     * City print test for empty filename
+     */
+    @Test
+    void populationPrintFilenameEmpty()
+    {
+        ArrayList<Population> populations = new ArrayList<Population>();
+        app.printPopulations(populations, "");
+    }
+
+    /**
+     * Area population print test for null population
+     */
+    @Test
+    void areaPopulationPrintNull()
+    {
+        app.printAreaPopulation(null, "TestFilename.md");
+    }
+
+    /**
+     * Area population print test for null filename
+     */
+    @Test
+    void areaPopulationPrintFilenameNull()
+    {
+        app.printAreaPopulation(null, null);
+    }
+
+    /**
+     * Area population print test for empty filename
+     */
+    @Test
+    void areaPopulationPrintFilenameEmpty()
+    {
+        app.printAreaPopulation(null, "");
     }
 
     /**
@@ -46,7 +90,7 @@ public class AppTest
     @Test
     void cityPrintNull()
     {
-        app.printCities(null);
+        app.printCities(null, "TestFilename.md");
     }
 
     /**
@@ -56,7 +100,47 @@ public class AppTest
     void cityPrintZero()
     {
         ArrayList<City> cities = new ArrayList<City>();
-        app.printCities(cities);
+        app.printCities(cities, "TestFilename.md");
+    }
+
+    /**
+     * City print test for null filename
+     */
+    @Test
+    void cityPrintFilenameNull()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, null);
+    }
+
+    /**
+     * City print test for empty filname
+     */
+    @Test
+    void cityPrintFilenameEmpty()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, "");
+    }
+
+    /**
+     * Capital City print test for null filename
+     */
+    @Test
+    void capitalCityPrintFilenameNull()
+    {
+        ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
+        app.printCapitalCities(cities, null);
+    }
+
+    /**
+     * Capital City print test for empty filename
+     */
+    @Test
+    void capitalCityPrintFilenameEmpty()
+    {
+        ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
+        app.printCapitalCities(cities, "");
     }
 
     /**
@@ -65,7 +149,7 @@ public class AppTest
     @Test
     void capitalCityPrintNull()
     {
-        app.printCapitalCities(null);
+        app.printCapitalCities(null, "TestFilename.md");
     }
 
     /**
@@ -75,7 +159,7 @@ public class AppTest
     void capitalCityPrintZero()
     {
         ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
-        app.printCapitalCities(cities);
+        app.printCapitalCities(cities, "TestFilename.md");
     }
 
     /**
@@ -84,7 +168,7 @@ public class AppTest
     @Test
     void countryPrintNull()
     {
-        app.printCountries(null);
+        app.printCountries(null, "TestFilename.md");
     }
 
     /**
@@ -94,7 +178,116 @@ public class AppTest
     void countryPrintZero()
     {
         ArrayList<Country> countries = new ArrayList<Country>();
-        app.printCountries(countries);
+        app.printCountries(countries, "TestFilename.md");
+    }
+
+    /**
+     * Country print test for empty filname
+     */
+    @Test
+    void countryPrintFilenameNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCountries(countries, null);
+    }
+
+    /**
+     * Country print test for empty filname
+     */
+    @Test
+    void countryPrintFilenameEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCountries(countries, "");
+    }
+
+    /**
+     * Populations language print test for null
+     */
+    @Test
+    void populationLangPrintNull()
+    {
+        app.printLanguagePopulations(null,"Banana");
+    }
+
+    /**
+     * Populations language print test for empty list
+     */
+    @Test
+    void populationLangPrintZero()
+    {
+        ArrayList<Population> langPopulations = new ArrayList<Population>();
+        app.printLanguagePopulations(langPopulations, "Banana");
+    }
+
+    /**
+     * Populations language print test for filename null
+     */
+    @Test
+    void populationLangPrintNameNull()
+    {
+        ArrayList<Population> langPopulations = new ArrayList<Population>();
+        app.printLanguagePopulations(langPopulations, null);
+    }
+
+    /**
+     * Populations language print test for invalid file name
+     */
+    @Test
+    void populationLangPrintNameInvalid()
+    {
+        ArrayList<Population> langPopulations = new ArrayList<Population>();
+        app.printLanguagePopulations(langPopulations, "!");
+    }
+
+    /**
+     * Population print test for invalid file name
+     */
+    @Test
+    void populationPrintNameInvalid()
+    {
+        ArrayList<Population> pops = new ArrayList<Population>();
+        app.printPopulations(pops, "!");
+    }
+
+    /**
+     * Capital city print test for invalid file name
+     */
+    @Test
+    void capitalCityPrintNameInvalid()
+    {
+        ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
+        app.printCapitalCities(cities, "!");
+    }
+
+    /**
+     * Area population print test for invalid file name
+     */
+    @Test
+    void areaPopulationPrintNameInvalid()
+    {
+        Population pops = new Population("banana", null);
+        app.printAreaPopulation(pops, "!");
+    }
+
+    /**
+     * City print test for invalid file name
+     */
+    @Test
+    void cityPrintNameInvalid()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, "!");
+    }
+
+    /**
+     * Country print test for invalid file name
+     */
+    @Test
+    void countryPrintNameInvalid()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCountries(countries, "!");
     }
 
     /**
@@ -257,5 +450,102 @@ public class AppTest
     void citiesByPopulationTestAreaMisspell()
     {
         app.citiesByPopulation(null,"Frence" );
+    }
+
+
+    /**
+     * Capital cities test for null area type
+     */
+    @Test
+    void capitalCitiesByPopulationTestAreaTypeNull()
+    {
+        app.capitalCitiesByPopulation(null, "Europe");
+    }
+
+    /**
+     * Capital cities test for null area name
+     */
+    @Test
+    void capitalCitiesByPopulationTestAreaNull()
+    {
+        app.capitalCitiesByPopulation("Continent", null);
+    }
+
+    /**
+     * Top N capital cities test for null area type
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaNull()
+    {
+        app.topNCapitalCitiesByPopulation(null, "Europe", 10);
+    }
+
+    /**
+     * Top N capital cities test for null area name
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaNameNull()
+    {
+        app.topNCapitalCitiesByPopulation("Continent", null, 10);
+    }
+
+    /**
+     * Top N capital cities test for area type Banana
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestAreaTypeInvalid()
+    {
+        app.topNCapitalCitiesByPopulation("Banana", "Europe", 10);
+    }
+
+    /**
+     * Top N capital cities test for N 0
+     */
+    @Test
+    void topNCapitalCitiesByPopulationTestNZero()
+    {
+        app.topNCountriesByPopulation("Continent", "Europe", 0);
+    }
+
+    /**
+     * Language names null
+     */
+    @Test
+    void languagePopul() {app.languagePops(null);}
+
+    /**
+     * Area test for null, null
+     */
+    @Test
+    void areasByPopulationTest()
+    {
+        app.areaPopulation(null, null);
+    }
+
+    /**
+     * Area test for null areaType
+     */
+    @Test
+    void areasByPopulationTestAreaTypeNull()
+    {
+        app.areaPopulation(null, "Europe");
+    }
+
+    /**
+     * Area test for null area name
+     */
+    @Test
+    void areasByPopulationTestAreaNameNull()
+    {
+        app.areaPopulation("Continent", null);
+    }
+
+    /**
+     * Area test for invalid area type
+     */
+    @Test
+    void areasByPopulationTestAreaNameInvalid()
+    {
+        app.areaPopulation("Banana", "Europe");
     }
 }

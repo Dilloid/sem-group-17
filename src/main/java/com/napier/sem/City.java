@@ -3,7 +3,8 @@ package com.napier.sem;
 /**
  * Represents a City
  */
-public class City {
+public class City
+{
 
     /**
      * Name of the city
@@ -72,7 +73,8 @@ public class City {
      * ToString for capital city
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "City{" +
                 "name=" + name +
                 ", countryCode=" + country +

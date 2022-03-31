@@ -5,7 +5,8 @@ import java.math.BigInteger;
 /**
  * Represents a Country
  */
-public class Country {
+public class Country
+{
 
     /**
      * Country code
@@ -102,7 +103,8 @@ public class Country {
      * ToString for Country
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Country{" +
                 "code=" + code +
                 ", name=" + name +
