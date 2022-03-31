@@ -2,11 +2,8 @@ package com.napier.sem;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Fun unit tests
@@ -51,7 +48,7 @@ public class AppTest
     }
 
     /**
-     * City print test for empty filname
+     * City print test for empty filename
      */
     @Test
     void populationPrintFilenameEmpty()
@@ -241,6 +238,56 @@ public class AppTest
     {
         ArrayList<Population> langPopulations = new ArrayList<Population>();
         app.printLanguagePopulations(langPopulations, "!");
+    }
+
+    /**
+     * Population print test for invalid file name
+     */
+    @Test
+    void populationPrintNameInvalid()
+    {
+        ArrayList<Population> pops = new ArrayList<Population>();
+        app.printPopulations(pops, "!");
+    }
+
+    /**
+     * Capital city print test for invalid file name
+     */
+    @Test
+    void capitalCityPrintNameInvalid()
+    {
+        ArrayList<CapitalCity> cities = new ArrayList<CapitalCity>();
+        app.printCapitalCities(cities, "!");
+    }
+
+    /**
+     * Area population print test for invalid file name
+     */
+    @Test
+    void areaPopulationPrintNameInvalid()
+    {
+        Population pops = new Population("banana", null);
+        app.printAreaPopulation(pops, "!");
+    }
+
+    /**
+     * City print test for invalid file name
+     */
+    @Test
+    void cityPrintNameInvalid()
+    {
+        ArrayList<City> cities = new ArrayList<City>();
+        app.printCities(cities, "!");
+    }
+
+    /**
+     * Country print test for invalid file name
+     */
+    @Test
+    void countryPrintNameInvalid()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        app.printCountries(countries, "!");
     }
 
     /**
@@ -461,10 +508,10 @@ public class AppTest
     }
 
     /**
-     * Language names misspelled
+     * Language names null
      */
     @Test
-    void languagePopul() {app.languagePops(new String[]{"Chin", "Enish", "Hdi", "Spanh", "Aric"});}
+    void languagePopul() {app.languagePops(null);}
 
     /**
      * Area test for null, null
