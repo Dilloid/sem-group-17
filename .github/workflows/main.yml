@@ -2,7 +2,7 @@ name: A workflow for sem-group-17 coursework
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   UnitTests:
@@ -72,7 +72,13 @@ jobs:
         run: |
           mvn package -DskipTests
           docker-compose up --abort-on-container-exit
-
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: true
+          automatic_release_tag: "latest"
+          files: |
+            ./target/*.jar
       - name: Copy Output
         run: docker container cp sem-group-17_app_1:./tmp/reports ./
       - name: Deploy
