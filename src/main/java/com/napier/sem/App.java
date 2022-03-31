@@ -383,6 +383,10 @@ public class App
         {
             System.out.println("No filename provided!");
         }
+        else if(!fileNameValid(filename))
+        {
+            System.out.println("Filename invalid!");
+        }
         else if(populations == null)
         {
             System.out.println("No populations list has been given");
@@ -483,6 +487,10 @@ public class App
         if (filename == null || filename == "")
         {
             System.out.println("No filename provided!");
+        }
+        else if(!fileNameValid(filename))
+        {
+            System.out.println("Filename invalid!");
         }
         else if(pop == null)
         {
@@ -1543,8 +1551,9 @@ public class App
      */
     public ArrayList<Population> languagePops(String[] langs)
     {
-        if(langs.length < 1)
+        if(langs == null || langs.length < 1)
         {
+            System.out.println("No languages provided");
             return null;
         }
         else
