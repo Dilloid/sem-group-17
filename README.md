@@ -15,8 +15,8 @@ Group 17 consists of Dillon Aitken, Jared Carr, James Piper, and Ross Muir.
 
 [![LICENSE](https://img.shields.io/github/license/Dilloid/sem-group-17.svg?style=flat-square)](https://github.com/Dilloid/sem-group-17/blob/master/LICENSE)
 
-| ID  | Name                                                                                                                     | Met | Screenshot                         |
-|-----|--------------------------------------------------------------------------------------------------------------------------|-----|------------------------------------|
+| ID  | Name                                                                                                                     | Met | Screenshot                             |
+|-----|--------------------------------------------------------------------------------------------------------------------------|-----|----------------------------------------|
 | 1   | All the countries in the world organised by largest population to smallest.                                              | Yes | [Screenshot](screenshots/report1.png)  |
 | 2   | All the countries in a continent organised by largest population to smallest.                                            | Yes | [Screenshot](screenshots/report2.png)  |
 | 3   | All the countries in a region organised by largest population to smallest.                                               | Yes | [Screenshot](screenshots/report3.png)  |
