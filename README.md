@@ -4,7 +4,7 @@ Coursework repository for Software Engineering Methods Group 17.
 
 Group 17 consists of Dillon Aitken, Jared Carr, James Piper, and Ross Muir.
 
-####32 requirements of 32 have been implemented, which is 100%.
+#### 32 requirements of 32 have been implemented, which is 100%.
 
 [![Releases](https://img.shields.io/github/release/Dilloid/sem-group-17/all.svg?style=flat-square)](https://github.com/Dilloid/sem-group-17/releases)
 
